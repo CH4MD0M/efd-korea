@@ -48,38 +48,13 @@ userSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, 12);
 
     this.passwordConfirm = undefined;
-    next();
-});
 
-// (resetPassword)
-userSchema.pre('save', async function (next) {
-    // 비밀번호가 수정된 적이 없거나 회원가입 하는 경우에는 그냥 보낸다.
-    if (!this.isModified('password') || this.isNew) return next();
-
-    this.passwordChangedAt = Date.now() - 1000;
-    next();
-});
-
-userSchema.pre(/^find/, function (next) {
-    this.find({ active: { $ne: false } });
     next();
 });
 
 // 로그인 시 사용
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
     return await bcrypt.compare(candidatePassword, userPassword); // return true || false
-};
-
-// (protect) 로그인 할 때 비밀번호 변경 이력이 있나 확인
-userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
-    if (this.passwordChangedAt) {
-        const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
-
-        return JWTTimestamp < changedTimestamp;
-    }
-
-    // False means NOT changed
-    return false;
 };
 
 const User = mongoose.model('User', userSchema);
