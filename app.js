@@ -7,7 +7,7 @@ const xss = require('xss-clean');
 
 const AppError = require('./utils/appError');
 
-// const viewRouter = require('./routes/viewRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 app.use(cors());
@@ -35,15 +35,8 @@ app.use(xss());
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
 
-// Test middleware
-app.use((req, res, next) => {
-    // 생성 시간 알려주는 미들웨어
-    req.requestTime = new Date().toISOString();
-    next();
-});
-
 // app.use('/api/v1', viewRouter);
-app.use('', (req, res) => res.json({ username: 'bryan' }));
+app.use('/api/v1/users', userRouter);
 
 // 익스프레스는 순서대로 실행되기에 오류 처리기는 다른 모든 미들웨어 뒤에 정의해야 함.
 app.all('*', (req, res, next) => {

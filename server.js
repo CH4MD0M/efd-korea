@@ -1,4 +1,4 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // DB Component, 일부 오류처리, 환경 변수 있는 파일
 const dotenv = require('dotenv');
 
@@ -11,12 +11,15 @@ process.on('uncaughtException', (err) => {
 
 dotenv.config({ path: './config.env' });
 
-const DB = process.env.DATABASE_LOCAL;
+const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
+    .replace('<USERNAME>', process.env.DATABASE_USERNAME)
+    .replace('<HOST>', process.env.DATABASE_HOST);
 
-/* mongoose.connect(DB, {
+mongoose.connect(DB, {
+    dbName: 'efdkorea',
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}); */
+});
 
 const app = require('./app');
 
