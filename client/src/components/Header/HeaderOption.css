@@ -1,0 +1,15 @@
+.headerOption {
+    display: flex;
+    align-items: center;
+    margin: 0 0.8rem;
+}
+.headerOption:hover {
+    color: #999;
+    transition: all 0.2s;
+}
+
+.headerOption__title {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-left: 0.4rem;
+}

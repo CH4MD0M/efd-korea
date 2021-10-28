@@ -1,0 +1,24 @@
+.navigation {
+    margin: 2rem 0;
+    height: 80px;
+    background-color: #88bdbb;
+}
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(4, 15rem);
+    grid-gap: 6rem;
+    justify-content: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: whitesmoke;
+    height: 80px;
+    text-align: center;
+    cursor: pointer;
+    /* background-color: brown; */
+}
