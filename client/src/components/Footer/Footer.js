@@ -1,23 +1,21 @@
 import React from "react";
-import "./Footer.css";
-
-import Navigation from "../Header/Navigation";
+import classes from "./Footer.module.css";
 
 const Footer = () => {
     return (
-        <div className="footer">
-            <ul class="footer-items">
-                <li class="footer-item">교육안내</li>
-                <li class="footer-item">교육자료소개</li>
-                <li class="footer-item">고객지원</li>
-                <li class="footer-item">My Class</li>
+        <div className={classes.footer}>
+            <ul class={classes["footer-items"]}>
+                <li class={classes["footer-item"]}>교육안내</li>
+                <li class={classes["footer-item"]}>교육자료소개</li>
+                <li class={classes["footer-item"]}>고객지원</li>
+                <li class={classes["footer-item"]}>My Class</li>
             </ul>
 
-            <div class="footer-context">
-                <h3 className="copyright">
+            <div class={classes["footer-context"]}>
+                <h3 className={classes.copyright}>
                     &copy; Copyright 2020 by efdkorea.
                 </h3>
-                <h3 className="company-address">
+                <h3 className={classes["company-address"]}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     <br />
                     Voluptates, libero nobis.
