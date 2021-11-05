@@ -1,24 +1,38 @@
+import { Redirect, Route, Switch } from "react-router";
+
+import Layout from "./components/Layout/Layout";
+import MainPage from "./pages/Main/MainPage";
+import DetailPage from "./pages/DetailPage/DetailPage";
+import Customer from "./pages/Customer/Customer";
+import MetaClass from "./pages/MetaClass/MetaClass";
+
+// Css
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Navigation from "./components/Header/Navigation";
-import ImageSlider from "./components/ImageSlider/ImageSlider";
-import MainContents from "./components/Main/MainContents";
 
 function App() {
     return (
-        <div className="app">
-            {/* Admin Header */}
-            <Header />
-            {/* Header Navigation */}
-            <Navigation />
-            {/* Image Slider */}
-            <ImageSlider />
-            {/* Main Contents */}
-            <MainContents />
-            {/* Footer */}
-            <Footer />
-        </div>
+        <Layout>
+            <Switch>
+                <Route path="/" exact>
+                    <Redirect to="/main" />
+                </Route>
+                <Route path="/main">
+                    <MainPage />
+                </Route>
+                <Route path="/info/:grade" exact>
+                    <DetailPage />
+                </Route>
+                <Route path="/intro/:grade" exact>
+                    <DetailPage />
+                </Route>
+                <Route path="/customer">
+                    <Customer />
+                </Route>
+                <Route path="/meta-class">
+                    <MetaClass />
+                </Route>
+            </Switch>
+        </Layout>
     );
 }
 
