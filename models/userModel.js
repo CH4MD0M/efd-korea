@@ -4,6 +4,9 @@ const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
     {
+        uid: {
+            type: String,
+        },
         displayName: {
             type: String,
             required: [true, '이름을 입력하세요.'],
@@ -13,8 +16,6 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, '이메일 입력은 필수입니다.'],
             unique: true,
-            maxlength: [40, '이메일의 길이는 최대 40자 이하로 입력해야 합니다'],
-            minlength: [10, '이메일의 길이는 최소 10자 이상 입력해야 합니다'],
             lowercase: true, // validator가 아닌 필수로 해야하는 조건
             validate: [validator.isEmail, '이메일형식에 맞지 않으니 확인 바랍니다.'],
         },
@@ -37,22 +38,12 @@ const userSchema = new mongoose.Schema(
                 message: '비밀번호가 다릅니다.',
             },
         },
-        /*
-    email_verified: {
-        type: Boolean,
-        required: true,
-        default: false,
-    }, 
-       locations: [
-      {
-        coordinates: [Number],
-        createAt: Date,
-      },
-    ],
-     passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-    */
+        locations: [
+            {
+                coordinates: [Number],
+                createAt: Date,
+            },
+        ],
         createdAt: {
             type: Date,
             default: Date.now(),
@@ -64,6 +55,16 @@ const userSchema = new mongoose.Schema(
             enum: ['M', 'T', 'A', 'S'],
             default: 'S',
         },
+        /*
+    email_verified: {
+        type: Boolean,
+        required: true,
+        default: false,
+    }, 
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
+    */
     },
     { strict: false }
 );

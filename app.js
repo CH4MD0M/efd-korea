@@ -1,5 +1,4 @@
 const path = require('path');
-const favicon = require('serve-favicon');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors'); // localhost fetch 쓸 때 오류를 없애주기 위한 미들웨어
@@ -39,18 +38,9 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Serving static files
-app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
 app.use(express.static(`${__dirname}/public`));
 
-let uri = '';
-if (process.env.NODE_ENV === 'production') {
-    uri = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
-        .replace('<USERNAME>', process.env.DATABASE_USERNAME)
-        .replace('<HOST>', process.env.DATABASE_HOST);
-} else {
-    uri = process.env.DATABASE_LOCAL;
-}
-
+const URI = require('./config/URI')(process.env);
 app.use(
     session({
         secret: 'keyboard cat', // 별도의 파일로 빼서 저장해야하는 비밀키
@@ -58,7 +48,7 @@ app.use(
         saveUninitialized: true, // 세션이 필요할 때만 구동시킴
         // rolling: true, // 새로고침, 페이지 이동 등 활동하면 세션 갱신. resave도 true로 바꾸어야 함
         store: new MongoDBStore({
-            uri,
+            URI,
             collection: 'session',
         }),
         cookie: {
@@ -68,12 +58,15 @@ app.use(
         },
     })
 );
+
 const passport = require('./passport')(app);
 
 const authRouter = require('./routes/authRoutes')(passport);
+const studyRouter = require('./routes/studyRoutes');
 // const viewRouter = require('./routes/viewRoutes');
 
 // app.use('', viewRouter);
+app.use('/study', studyRouter);
 app.use('/auth', authRouter);
 
 // 익스프레스는 순서대로 실행되기에 오류 처리기는 다른 모든 미들웨어 뒤에 정의해야 함.

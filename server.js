@@ -8,16 +8,9 @@ process.on('uncaughtException', (err) => {
     process.exit(1);
 });
 
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: './config/config.env' });
 
-let URI = '';
-if (process.env.NODE_ENV === 'production') {
-    URI = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
-        .replace('<USERNAME>', process.env.DATABASE_USERNAME)
-        .replace('<HOST>', process.env.DATABASE_HOST);
-} else {
-    URI = process.env.DATABASE_LOCAL;
-}
+const URI = require('./config/URI')(process.env);
 
 mongoose.connect(URI, {
     dbName: 'efdkorea',
