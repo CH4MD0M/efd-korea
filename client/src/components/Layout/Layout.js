@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Navigation from "../Navigation/Navigation";
+import Navbar from "../Navigation/Navbar";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -10,7 +10,7 @@ const Layout = (props) => {
     return (
         <Fragment>
             <Header />
-            <Navigation />
+            <Navbar />
             <main className={classes.main}>{props.children}</main>
             <Footer />
         </Fragment>
