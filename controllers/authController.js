@@ -1,11 +1,58 @@
-const crypto = require('crypto');
-const { promisify } = require('util');
-const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
-const AppError = require('./../utils/appError');
-const sendEmail = require('./../utils/email');
+// const sendEmail = require('./../utils/email');
 
+exports.signIn = (passport) => (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.status(401).json(info);
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+
+            const session = req.session;
+            res.status(200).json({ status: 'SUCCESS', session });
+        });
+    })(req, res, next);
+};
+
+exports.google = (passport) =>
+    passport.authenticate('google', { scope: ['profile', 'email'] });
+
+exports.googleCallback = (passport) =>
+    passport.authenticate('google', { failureRedirect: '/login' });
+
+exports.redirect = (req, res, next) => {
+    const session = req.session;
+    res.status(200).json({ status: 'SUCCESS', session });
+};
+
+exports.logout = (req, res, next) => {
+    req.logout();
+    req.session.save(() => {
+        res.status(200).json({ status: 'SUCCESS' });
+    });
+};
+
+exports.signUp = catchAsync(async (req, res, next) => {
+    const { email, password, passwordConfirm, displayName } = req.body;
+
+    const user = await User.create({ email, password, passwordConfirm, displayName });
+
+    res.status(200).json({
+        status: 'SUCCESS',
+        data: {
+            user,
+        },
+    });
+});
+
+/* 
 const createAuthenticationToken = () =>
     crypto.randomBytes(256).toString('hex').substr(100, 5) +
     crypto.randomBytes(256).toString('base64').substr(50, 5);
@@ -17,12 +64,11 @@ const createAuthenticationEmail = (req, token) => {
 
     return `아래 인증 코드를 사용하여 계정을 활성화하십시오. \n ${url} \n이 전자 메일을 요청하지 않은 경우 무시해도 됩니다.`;
 };
-
 exports.signup = catchAsync(async (req, res, next) => {
     const key_for_verify = createAuthenticationToken();
-
+    
     const message = createAuthenticationEmail(req, key_for_verify);
-
+    
     const newUser = await User.create({
         name: req.body.name,
         email: req.body.email,
@@ -36,7 +82,7 @@ exports.signup = catchAsync(async (req, res, next) => {
             subject: '잘 오셨어요! 이메일 확인바랍니다.',
             message,
         });
-
+        
         res.status(200).json({
             status: 'SUCCESS',
             message: '인증 이메일을 보냈습니다.',
@@ -47,45 +93,45 @@ exports.signup = catchAsync(async (req, res, next) => {
     } catch (err) {
         newUser.key_for_verify = undefined;
         await newUser.save({ validateBeforeSave: false });
-
+        
         return next(
             new AppError(
                 '이메일을 보내는 동안 오류가 발생했습니다. 나중에 다시 시도하세요!',
                 500
-            )
-        );
-    }
-});
-
-exports.emailVerification = catchAsync(async (req, res, next) => {
-    // 1) 토큰을 기반으로 사용자 가져오기
-
-    const user = await User.findOne({
-        key_for_verify: req.query.token,
-    });
-
-    // 2) 토큰이 만료되지 않았고 사용자가 있는 경우, 새 비밀번호를 설정합니다.
-    if (!user) {
-        return next(
-            new AppError(
-                '토큰이 만료되었거나 유효하지 않습니다. 다시 확인하여 주시기 바랍니다.',
-                400
-            )
-        );
-    }
-
-    //3) 이메일 인증에 대한 email_verified 속성 업데이트
-    user.email_verified = true;
-    user.key_for_verify = undefined;
-    await user.save({ validateBeforeSave: false });
-
-    res.status(200).json({
-        status: 'SUCCESS',
-        message: '이메일 인증에 성공했습니다.',
-    });
-});
-
-exports.login = catchAsync(async (req, res, next) => {
+                )
+                );
+            }
+        });
+        
+        exports.emailVerification = catchAsync(async (req, res, next) => {
+            // 1) 토큰을 기반으로 사용자 가져오기
+            
+            const user = await User.findOne({
+                key_for_verify: req.query.token,
+            });
+            
+            // 2) 토큰이 만료되지 않았고 사용자가 있는 경우, 새 비밀번호를 설정합니다.
+            if (!user) {
+                return next(
+                    new AppError(
+                        '토큰이 만료되었거나 유효하지 않습니다. 다시 확인하여 주시기 바랍니다.',
+                        400
+                        )
+                        );
+                    }
+                    
+                    //3) 이메일 인증에 대한 email_verified 속성 업데이트
+                    user.email_verified = true;
+                    user.key_for_verify = undefined;
+                    await user.save({ validateBeforeSave: false });
+                    
+                    res.status(200).json({
+                        status: 'SUCCESS',
+                        message: '이메일 인증에 성공했습니다.',
+                    });
+                });
+                
+                exports.login = catchAsync(async (req, res, next) => {
     const { email, password } = req.body;
     // 1) 이메일, 비밀번호로 사용자 존재 여부 확인
     if (!email || !password) {
@@ -165,3 +211,4 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.user = currentUser;
     next();
 });
+*/

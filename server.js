@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 // DB Component, 일부 오류처리, 환경 변수 있는 파일
 const dotenv = require('dotenv');
-
 // 예기치 못한 Exception 잡기: console.log(asd); <-이런거
 process.on('uncaughtException', (err) => {
     console.log('예기치 못한 상황으로 인해 프로그램 강제종료.');
@@ -11,11 +10,16 @@ process.on('uncaughtException', (err) => {
 
 dotenv.config({ path: './config.env' });
 
-const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
-    .replace('<USERNAME>', process.env.DATABASE_USERNAME)
-    .replace('<HOST>', process.env.DATABASE_HOST);
+let URI = '';
+if (process.env.NODE_ENV === 'production') {
+    URI = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
+        .replace('<USERNAME>', process.env.DATABASE_USERNAME)
+        .replace('<HOST>', process.env.DATABASE_HOST);
+} else {
+    URI = process.env.DATABASE_LOCAL;
+}
 
-mongoose.connect(DB, {
+mongoose.connect(URI, {
     dbName: 'efdkorea',
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -1,0 +1,30 @@
+extends index
+
+block content
+  form.form.form--signup(action='/auth/signup' method='POST')
+    div
+      label(for='email') Email
+      input#email.form__input(
+        type='email',
+        name='email',
+        value='seastory624@gmail.com',
+        required
+      )
+    div
+      label(for='password') Password
+      input#password.form__input(type='password' name='password' value='Tjddn062$',required)
+
+    div
+      label(for='passwordConfirm') PasswordConfirm
+      input#passwordConfirm.form__input(
+        type='password',
+        name='passwordConfirm',
+        value='Tjddn062$',
+        required
+      )
+
+    div
+      label(for='displayName') Display Name
+      input#displayName.form__input(type='text' name='displayName' value='gyomdyung', required)
+
+    button.btn.btn--green(type='submit') Sign Up

@@ -1,0 +1,21 @@
+extends index
+
+block content
+  form.form.form--login(action='/auth/signIn' method='POST')
+    div
+      label(for='email') Email
+      input#email.form__input(
+        type='email',
+        name='email',
+        placeholder='you@example.com',
+        required
+      )
+
+    div
+      label(for='password') Password
+      input#password.form__input(type='password' name='password', required)
+
+    button.btn.btn--green(type='submit') login
+
+  div
+    a(href='/auth/google' style='color: black; font-size: 2rem')= `구글로그인`
