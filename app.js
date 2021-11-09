@@ -15,9 +15,6 @@ const AppError = require('./utils/appError');
 const app = express();
 app.use(cors());
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
-
 // Security HTTP headers
 // app.use(helmet());
 
@@ -63,9 +60,7 @@ const passport = require('./passport')(app);
 
 const authRouter = require('./routes/authRoutes')(passport);
 const studyRouter = require('./routes/studyRoutes');
-// const viewRouter = require('./routes/viewRoutes');
 
-// app.use('', viewRouter);
 app.use('/study', studyRouter);
 app.use('/auth', authRouter);
 

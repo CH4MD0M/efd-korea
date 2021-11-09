@@ -13,7 +13,7 @@ module.exports = (passport) => {
 
     router.route('/logout').get(authController.logout);
 
-    router.route('/signup').post(authController.signUp);
+    router.route('/signUp').post(authController.signUp);
 
     // router.get('/emailVerification', authController.emailVerification);
 
