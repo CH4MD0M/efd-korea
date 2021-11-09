@@ -1,7 +1,7 @@
 import React from "react";
 
 // Css
-import classes from "./InfoPage.module.css";
+// import classes from "./InfoPage.module.css";
 
 export const InfoPageEle = () => {
     return (

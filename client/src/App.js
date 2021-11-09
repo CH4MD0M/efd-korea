@@ -14,6 +14,8 @@ import {
 } from "./pages/DetailPage/IntroPage";
 import Customer from "./pages/Customer/Customer";
 import MetaClass from "./pages/MetaClass/MetaClass";
+import SignInPage from "./pages/User/SignInPage";
+import SignUpPage from "./pages/User/SignUpPage";
 import NotFound from "./pages/NotFound";
 
 // Css
@@ -32,6 +34,9 @@ function App() {
                 <Route path="/intro/high" exact component={IntroPageHigh} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/meta-class" component={MetaClass} />
+                <Route path="/sign-in" exact component={SignInPage} />
+                <Route path="/sign-up" exact component={SignUpPage} />
+
                 <Route path="/*" component={NotFound} />
             </Switch>
         </Layout>

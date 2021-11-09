@@ -1,7 +1,7 @@
 import React from "react";
 
 // Css
-import classes from "./IntroPage.module.css";
+// import classes from "./IntroPage.module.css";
 
 export const IntroPageEle = () => {
     return (

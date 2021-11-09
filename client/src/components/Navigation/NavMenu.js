@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { TransitionGroup } from "react-transition-group";
+
 // Css
 import classes from "./NavMenu.module.css";
 
