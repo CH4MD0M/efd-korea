@@ -4,7 +4,7 @@ import MainOption from "./MainOption";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 
 // Css
-import classes from "./MainPage.module.scss";
+import classes from "./MainPage.module.css";
 // Icon
 import CastForEducationIcon from "@mui/icons-material/CastForEducation";
 import PublicIcon from "@mui/icons-material/Public";

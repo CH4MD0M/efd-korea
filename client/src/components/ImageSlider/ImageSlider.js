@@ -2,6 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay, EffectCoverflow } from "swiper";
 
+// Css
 import "swiper/swiper-bundle.css";
 import classes from "./ImageSlider.module.css";
 

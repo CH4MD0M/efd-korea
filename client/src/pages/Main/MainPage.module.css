@@ -4,7 +4,7 @@
     align-items: center;
 }
 .main__contents {
-    &--1 {
+    /* &--1 {
         text-align: center;
         & > h1 {
             font-size: 5rem;
@@ -15,7 +15,7 @@
     }
     &--3 {
         height: 50rem;
-    }
+    } */
 }
 .contents-items {
     display: grid;
