@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 
 // Css
-import classes from "./Homebutton.module.css";
+import classes from "./Homebutton.module.scss";
 
 const HomeButton = () => {
     const history = useHistory();

@@ -4,18 +4,18 @@
     align-items: center;
 }
 .main__contents {
-    /* &--1 {
+    &--1 {
+        height: 50rem;
+    }
+    &--2 {
         text-align: center;
         & > h1 {
             font-size: 5rem;
         }
     }
-    &--2 {
-        height: 50rem;
-    }
     &--3 {
         height: 50rem;
-    } */
+    }
 }
 .contents-items {
     display: grid;

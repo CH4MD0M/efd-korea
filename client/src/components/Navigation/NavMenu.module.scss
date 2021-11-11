@@ -8,17 +8,18 @@
     text-decoration: none;
     color: white;
     transition: all 0.25s;
+
+    &:hover {
+        background: #2f4858;
+        border-left: 1rem solid #4e8c79;
+        cursor: pointer;
+    }
+
+    &-icon > svg {
+        font-size: 2.4rem;
+    }
 }
 
-.navLink:hover {
-    background: #2f4858;
-    border-left: 1rem solid #4e8c79;
-    cursor: pointer;
-}
-
-.navLink-icon > svg {
-    font-size: 2.4rem;
-}
 .navLink-title,
 .dropdownLink-title {
     font-size: 1.5rem;
@@ -34,9 +35,9 @@
     color: white;
     font-size: 18px;
     transition: all 0.25s;
-}
 
-.dropdownLink:hover {
-    background: #316a71;
-    cursor: pointer;
+    &:hover {
+        background: #316a71;
+        cursor: pointer;
+    }
 }

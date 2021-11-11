@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Css
-import classes from "./NavMenu.module.css";
+import classes from "./NavMenu.module.scss";
 
 const NavMenu = ({ item }) => {
     const [dropdown, setDropdown] = useState(false);

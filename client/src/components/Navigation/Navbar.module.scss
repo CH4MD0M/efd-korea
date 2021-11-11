@@ -4,20 +4,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
 
-.menu-icon {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 8rem;
-    margin-right: 3rem;
-    color: azure;
+    &-icon {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 8rem;
+        margin-right: 3rem;
+        color: azure;
+        & > svg {
+            font-size: 4rem;
+        }
+    }
 }
-.menu-icon > svg {
-    font-size: 4rem;
-}
-
 .navigation {
     display: flex;
     justify-content: center;
@@ -30,9 +29,10 @@
     margin-top: 5rem;
     transition: all 0.5s;
     z-index: 10;
-}
-.navigation-right {
-    right: 0;
+
+    &-right {
+        right: 0;
+    }
 }
 
 .navbarWrap {

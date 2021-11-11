@@ -6,7 +6,7 @@ import NavMenu from "./NavMenu";
 import HomeButton from "./HomeButton";
 
 // Css
-import classes from "./Navbar.module.css";
+import classes from "./Navbar.module.scss";
 
 // Icon
 import MenuIcon from "@mui/icons-material/Menu";
