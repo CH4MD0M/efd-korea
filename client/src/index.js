@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./store/auth-context";
 
-import registerServiceWorker from "./registerServiceWorker";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
     <AuthContextProvider>
@@ -15,4 +15,5 @@ ReactDOM.render(
     </AuthContextProvider>,
     document.getElementById("root")
 );
-registerServiceWorker();
+
+reportWebVitals();

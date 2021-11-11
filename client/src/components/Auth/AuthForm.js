@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import AuthContext from "../../store/auth-context";
 
 // Css
 import classes from "./AuthForm.module.css";
@@ -9,16 +10,30 @@ const AuthForm = (props) => {
     const passwordInputRef = useRef();
     const passwordConfInputRef = useRef();
     const displayNameInputRef = useRef();
+
+    const authCtx = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
     const [isLogin, setIsLogin] = useState(props.isLogin);
 
-    // const signInHandler = (event) => {
-    //     event.preventDefault();
-    //     const credentials = {
-    //         email: emailInputRef.current.value,
-    //         password: passwordInputRef.current.value,
-    //     };
-    // };
+    const signInHandler = (event) => {
+        event.preventDefault();
+
+        setIsLoading(true);
+        const credentials = {
+            email: emailInputRef.current.value,
+            password: passwordInputRef.current.value,
+        };
+        const url = "/auth/signIn";
+
+        axios
+            .post(url, credentials)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     const signUpHandler = (event) => {
         event.preventDefault();
         setIsLoading(true);
@@ -49,7 +64,7 @@ const AuthForm = (props) => {
     return (
         <section className={`${classes.auth} ${loginCss}`}>
             <h1> {isLogin ? "로그인" : "회원가입"}</h1>
-            <form onSubmit={signUpHandler}>
+            <form onSubmit={isLogin ? signInHandler : signUpHandler}>
                 <div className={classes.control}>
                     <label htmlFor="email">이메일</label>
                     <input
