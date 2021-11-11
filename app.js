@@ -13,15 +13,11 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const AppError = require('./utils/appError');
 
 const app = express();
-app.use(cors());
-
-// Security HTTP headers
-// app.use(helmet());
-
-// Development logging
 if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
+    // Development logging
+    app.use(cors());
 }
+app.use(morgan('dev'));
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' })); // form에서 보낸 데이터들을 req.body 객체에 담아주는 미들웨어
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
@@ -35,9 +31,11 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Serving static files
-app.use(express.static(`${__dirname}/public`));
+const env = process.env.NODE_ENV === 'development' ? 'public' : 'build';
+const root = require('path').join(__dirname, 'client', `${env}`);
+app.use(express.static(root));
 
-const URI = require('./config/URI')(process.env);
+const uri = require('./config/URI')(process.env);
 app.use(
     session({
         secret: 'keyboard cat', // 별도의 파일로 빼서 저장해야하는 비밀키
@@ -45,7 +43,7 @@ app.use(
         saveUninitialized: true, // 세션이 필요할 때만 구동시킴
         // rolling: true, // 새로고침, 페이지 이동 등 활동하면 세션 갱신. resave도 true로 바꾸어야 함
         store: new MongoDBStore({
-            URI,
+            uri,
             collection: 'session',
         }),
         cookie: {
@@ -63,6 +61,10 @@ const studyRouter = require('./routes/studyRoutes');
 
 app.use('/study', studyRouter);
 app.use('/auth', authRouter);
+
+app.use('/*', (req, res) => {
+    res.sendFile(path.join(root, 'index.html'));
+});
 
 // 익스프레스는 순서대로 실행되기에 오류 처리기는 다른 모든 미들웨어 뒤에 정의해야 함.
 app.all('*', (req, res, next) => {
