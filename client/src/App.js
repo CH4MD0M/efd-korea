@@ -1,5 +1,7 @@
-import { Route, Switch } from "react-router";
+import { useContext } from "react";
+import { Redirect, Route, Switch } from "react-router";
 
+import AuthContext from "./store/auth-context";
 import Layout from "./components/Layout/Layout";
 import MainPage from "./pages/Main/MainPage";
 import {
@@ -16,12 +18,13 @@ import Customer from "./pages/Customer/Customer";
 import MetaClass from "./pages/MetaClass/MetaClass";
 import SignInPage from "./pages/User/SignInPage";
 import SignUpPage from "./pages/User/SignUpPage";
-import NotFound from "./pages/NotFound";
+import Profile from "./pages/User/ProfilePage";
 
 // Css
 import "./App.css";
 
-function App() {
+const App = () => {
+    const authCtx = useContext(AuthContext);
     return (
         <Layout>
             <Switch>
@@ -34,13 +37,25 @@ function App() {
                 <Route path="/intro/high" exact component={IntroPageHigh} />
                 <Route path="/customer" component={Customer} />
                 <Route path="/meta-class" component={MetaClass} />
-                <Route path="/sign-in" exact component={SignInPage} />
-                <Route path="/sign-up" exact component={SignUpPage} />
 
-                <Route path="/*" component={NotFound} />
+                {!authCtx.isLoggedIn && (
+                    <Route path="/sign-in" exact component={SignInPage} />
+                )}
+                {!authCtx.isLoggedIn && (
+                    <Route path="/sign-up" exact component={SignUpPage} />
+                )}
+
+                <Route path="/profile" exact>
+                    {authCtx.isLoggedIn && <Profile />}
+                    {!authCtx.isLoggedIn && <Redirect to="sign-in" />}
+                </Route>
+
+                <Route path="*">
+                    <Redirect to="/" />
+                </Route>
             </Switch>
         </Layout>
     );
-}
+};
 
 export default App;

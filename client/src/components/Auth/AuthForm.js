@@ -1,57 +1,52 @@
 import axios from "axios";
 import React, { useState, useRef, useContext } from "react";
+import { useHistory } from "react-router";
 import AuthContext from "../../store/auth-context";
+import { URL } from "../../constants/config";
 
 // Css
 import classes from "./AuthForm.module.css";
 
 const AuthForm = (props) => {
+    const history = useHistory();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     const passwordConfInputRef = useRef();
     const displayNameInputRef = useRef();
 
     const authCtx = useContext(AuthContext);
+
     const [isLoading, setIsLoading] = useState(false);
     const [isLogin, setIsLogin] = useState(props.isLogin);
 
-    const signInHandler = (event) => {
-        event.preventDefault();
+    const loginCss = isLogin ? classes["auth-login"] : "";
 
+    const SubmitHandler = (event) => {
+        const url = isLogin ? `${URL}/auth/signIn` : `${URL}/auth/signUp`;
+        const credentials = isLogin
+            ? {
+                  email: emailInputRef.current.value,
+                  password: passwordInputRef.current.value,
+              }
+            : {
+                  email: emailInputRef.current.value,
+                  password: passwordInputRef.current.value,
+                  passwordConfirm: passwordConfInputRef.current.value,
+                  displayName: displayNameInputRef.current.value,
+              };
+        event.preventDefault();
         setIsLoading(true);
-        const credentials = {
-            email: emailInputRef.current.value,
-            password: passwordInputRef.current.value,
-        };
-        const url = "/auth/signIn";
 
         axios
             .post(url, credentials)
             .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-    const signUpHandler = (event) => {
-        event.preventDefault();
-        setIsLoading(true);
-        const credentials = {
-            email: emailInputRef.current.value,
-            password: passwordInputRef.current.value,
-            passwordConfirm: passwordConfInputRef.current.value,
-            displayName: displayNameInputRef.current.value,
-        };
-        const url = "http://localhost:5000/auth/signUp";
-
-        axios
-            .post(url, credentials)
-            .then((response) => {
-                // const result = response.data;
-                // console.log(result);
-
-                console.log(response);
+                setIsLoading(false);
+                isLogin &&
+                    authCtx.login(
+                        response.data.session.passport.user._id,
+                        response.data.session.cookie.expires
+                    );
+                history.replace("/");
             })
             .catch((error) => {
                 setIsLoading(false);
@@ -60,11 +55,11 @@ const AuthForm = (props) => {
 
         // Validation
     };
-    const loginCss = isLogin ? classes["auth-login"] : "";
+
     return (
         <section className={`${classes.auth} ${loginCss}`}>
             <h1> {isLogin ? "로그인" : "회원가입"}</h1>
-            <form onSubmit={isLogin ? signInHandler : signUpHandler}>
+            <form onSubmit={SubmitHandler}>
                 <div className={classes.control}>
                     <label htmlFor="email">이메일</label>
                     <input

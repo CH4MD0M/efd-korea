@@ -4,7 +4,6 @@ import PersonPinIcon from "@mui/icons-material/PersonPin";
 import VrpanoIcon from "@mui/icons-material/Vrpano";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import LockIcon from "@mui/icons-material/Lock";
 
 export const NavbarData = [
     {
@@ -41,5 +40,4 @@ export const NavbarData = [
         ],
     },
     { title: "Meta-Class", path: "/meta-class", icon: <VrpanoIcon /> },
-    { title: "로그인", path: "/sign-in", icon: <LockIcon /> },
 ];

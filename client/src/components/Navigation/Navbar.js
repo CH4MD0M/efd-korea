@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import AuthContext from "../../store/auth-context";
 import { NavbarData } from "./NavbarData";
 import NavMenu from "./NavMenu";
 import HomeButton from "./HomeButton";
+import LogoutButton from "./LogoutButton";
 
 // Css
 import classes from "./Navbar.module.scss";
+import styles from "./NavMenu.module.scss";
 
 // Icon
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LockIcon from "@mui/icons-material/Lock";
 
 const Navigation = () => {
+    const authCtx = useContext(AuthContext);
+    const isLoggedIn = authCtx.isLoggedIn;
+
     const [navbar, setNavbar] = useState(false);
 
     const showNavbar = () => setNavbar(!navbar);
@@ -36,6 +43,20 @@ const Navigation = () => {
                     {NavbarData.map((item, index) => {
                         return <NavMenu item={item} key={index} />;
                     })}
+                    <>
+                        {!isLoggedIn && (
+                            <Link to="/sign-in" className={styles.navLink}>
+                                <div className={styles["navLink-icon"]}>
+                                    <LockIcon />
+                                </div>
+                                <span className={styles["navLink-title"]}>
+                                    로그인
+                                </span>
+                                <div></div>
+                            </Link>
+                        )}
+                        {isLoggedIn && <LogoutButton />}
+                    </>
                 </div>
             </nav>
         </>
