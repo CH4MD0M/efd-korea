@@ -1,7 +1,7 @@
 'use strict';
 const nodemailer = require('nodemailer');
 
-const sendEmail = async (options) => {
+const sendEmail = (options) => {
     // 메일발송 함수
 
     let transporter = nodemailer.createTransport({

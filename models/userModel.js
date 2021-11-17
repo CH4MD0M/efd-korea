@@ -55,12 +55,15 @@ const userSchema = new mongoose.Schema(
             enum: ['M', 'T', 'A', 'S'],
             default: 'S',
         },
+        // 인증여부
+        email_verified: {
+            type: Boolean,
+            required: true,
+            default: false,
+        },
+        // 인증코드
+        key_for_verify: { type: String, select: false },
         /*
-    email_verified: {
-        type: Boolean,
-        required: true,
-        default: false,
-    }, 
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,

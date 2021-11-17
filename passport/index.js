@@ -16,8 +16,8 @@ module.exports = (app) => {
     });
 
     // 매 요청 시 실행.
-    passport.deserializeUser(async (user, done) => {
-        await User.findOne({ email: user.email }, (err, user) => {
+    passport.deserializeUser((user, done) => {
+        User.findOne({ email: user.email }, (err, user) => {
             done(err, user);
         });
     });
@@ -27,3 +27,5 @@ module.exports = (app) => {
 
     return passport;
 };
+
+// req.user 사용자 정보 담김

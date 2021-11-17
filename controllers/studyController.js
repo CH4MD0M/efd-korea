@@ -45,7 +45,7 @@ exports.getVocaStats = catchAsync(async (req, res, next) => {
     ]);
 
     res.status(200).json({
-        status: 'success',
+        status: 'SUCCESS',
         data: { stats },
     });
 });
