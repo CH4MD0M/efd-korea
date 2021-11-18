@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Redirect, Route, Switch } from "react-router";
-
 import AuthContext from "./store/auth-context";
+
 import Layout from "./components/Layout/Layout";
 import MainPage from "./pages/Main/MainPage";
 import {
@@ -19,6 +19,7 @@ import MetaClass from "./pages/MetaClass/MetaClass";
 import SignInPage from "./pages/User/SignInPage";
 import SignUpPage from "./pages/User/SignUpPage";
 import Profile from "./pages/User/ProfilePage";
+import Modal from "./components/Modal/Modal";
 
 // Css
 import "./App.css";
@@ -54,6 +55,7 @@ const App = () => {
                     <Redirect to="/" />
                 </Route>
             </Switch>
+            {authCtx.isErrorOccured && <Modal msg={authCtx.errorMsg}></Modal>}
         </Layout>
     );
 };

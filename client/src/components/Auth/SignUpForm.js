@@ -1,14 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 
 import { URL } from "../../constants/config";
+import AuthContext from "../../store/auth-context";
 
 // Css
 import classes from "./AuthForm.module.scss";
 
 const SignUpForm = () => {
+    const authCtx = useContext(AuthContext);
+
     const {
         register,
         formState: { errors },
@@ -41,8 +44,11 @@ const SignUpForm = () => {
                 history.replace("/sign-in");
             })
             .catch((error) => {
-                setIsLoading(false);
-                alert(error);
+                if (error.response) {
+                    setIsLoading(false);
+                    const errorMsg = error.response.data.message;
+                    authCtx.modal(errorMsg);
+                }
             });
     };
 
