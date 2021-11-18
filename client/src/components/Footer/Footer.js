@@ -6,14 +6,14 @@ import classes from "./Footer.module.css";
 const Footer = () => {
     return (
         <div className={classes.footer}>
-            <ul class={classes["footer-items"]}>
-                <li class={classes["footer-item"]}>교육안내</li>
-                <li class={classes["footer-item"]}>교육자료소개</li>
-                <li class={classes["footer-item"]}>고객지원</li>
-                <li class={classes["footer-item"]}>My Class</li>
+            <ul className={classes["footer-items"]}>
+                <li className={classes["footer-item"]}>교육안내</li>
+                <li className={classes["footer-item"]}>교육자료소개</li>
+                <li className={classes["footer-item"]}>고객지원</li>
+                <li className={classes["footer-item"]}>My Class</li>
             </ul>
 
-            <div class={classes["footer-context"]}>
+            <div className={classes["footer-context"]}>
                 <h3 className={classes.copyright}>
                     &copy; Copyright 2020 by efdkorea.
                 </h3>
