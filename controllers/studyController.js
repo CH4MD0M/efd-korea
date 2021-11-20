@@ -1,6 +1,7 @@
 const Voca = require('./../models/vocabularyModel');
 const Conversation = require('./../models/conversationModel');
 const catchAsync = require('./../utils/catchAsync');
+const readCSV = require('./../utils/readCSV');
 
 exports.getAllVoca = catchAsync(async (req, res, next) => {
     const voca = await Voca.find();
@@ -9,9 +10,11 @@ exports.getAllVoca = catchAsync(async (req, res, next) => {
 });
 
 exports.createVoca = catchAsync(async (req, res, next) => {
-    const converse = await Voca.create(req.body);
+    const converse = readCSV(req.file.buffer);
 
-    res.status(200).json({ status: 'SUCCESS', data: { converse } });
+    const data = await Voca.create(converse);
+
+    res.status(200).json({ status: 'SUCCESS', data });
 });
 
 exports.getConverse = catchAsync(async (req, res, next) => {
@@ -21,9 +24,12 @@ exports.getConverse = catchAsync(async (req, res, next) => {
 });
 
 exports.createConverse = catchAsync(async (req, res, next) => {
-    const converse = await Conversation.create(req.body);
+    const converse = readCSV(req.file.buffer);
 
-    res.status(200).json({ status: 'SUCCESS', data: { converse } });
+    // console.log(converse);
+    const data = await Conversation.create(converse);
+
+    res.status(200).json({ status: 'SUCCESS', data });
 });
 
 exports.getVocaStats = catchAsync(async (req, res, next) => {

@@ -1,7 +1,6 @@
 const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const sendEmail = require('./../utils/email');
-const AppError = require('./../utils/appError');
 const crypto = require('crypto');
 
 const createAuthenticationToken = () =>
@@ -54,10 +53,8 @@ exports.signIn = (passport) =>
             //See Other:클라이언트가 요청한 리소스를 다른 URI에서 GET 요청을 통해 얻어야 할 때
             return res.status(303).json({
                 status: 'FAIL',
-                message: {
-                    msg1: '이메일 인증을 받은 계정이 아닙니다. 이메일 인증을 받아주시기 바랍니다.',
-                    msg2: '재인증 이메일을 보냈으니 확인 바랍니다.',
-                },
+                message:
+                    '이메일 인증을 받은 계정이 아닙니다. 이메일 인증을 받아주시기 바랍니다.',
             });
         }
 

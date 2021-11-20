@@ -6,31 +6,28 @@ const autoIncrement = require('./../utils/autoIncrement')(URI);
 const vocabularySchema = new mongoose.Schema({
     language: {
         type: String,
-        enum: ['kl', 'cl', 'el', 'rl'],
+        // enum: ['kl', 'cl', 'el', 'rl'],
     },
     level: {
         type: Number,
         require: true,
-        enum: [11, 12, 21, 22, 31, 32],
     },
-    unit: {
+    // 단원
+    chapter: {
         type: Number,
         require: true,
-        enum: [1, 2, 3, 29],
+        // enum: [1, 2, 3, 29],
     },
+    //구분, gubun
     classification: {
         type: Number,
         require: true,
-        enum: [1, 2, 3, 4, 5, 6, 7],
+        // enum: [1, 2, 3, 4, 5, 6, 7],
     },
-    vocabulary: [
-        {
-            kl: { type: String, require: true },
-            el: { type: String, require: true },
-            rl: { type: String, require: true },
-            cl: { type: String, require: true },
-        },
-    ],
+    kl: { type: String, require: true },
+    el: { type: String, require: true },
+    rl: { type: String, require: true },
+    cl: { type: String, require: true },
     createdAt: {
         type: Date,
         default: Date.now(),

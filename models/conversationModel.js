@@ -7,31 +7,28 @@ const conversationSchema = new mongoose.Schema({
     language: {
         type: String,
         require: true,
-        enum: ['kl', 'cl', 'el', 'rl'],
+        // enum: ['kl', 'cl', 'el', 'rl'],
     },
     level: {
         type: Number,
         require: true,
-        enum: [11, 12, 21, 22, 31, 32],
+        // enum: [11, 12, 21, 22, 31, 32],
     },
-    unit: {
+    // 단원
+    chapter: {
         type: Number,
         require: true,
-        enum: [1, 2, 3, 29],
+        // enum: [1, 2, 3, 29],
     },
     classification: {
         type: Number,
         require: true,
-        enum: [1, 2, 3, 4, 5, 6, 7],
+        // enum: [1, 2, 3, 4, 5, 6, 7],
     },
-    sentence: [
-        {
-            kl: { type: String, require: true },
-            el: { type: String, require: true },
-            rl: { type: String, require: true },
-            cl: { type: String, require: true },
-        },
-    ],
+    kl: { type: String, require: true },
+    el: { type: String, require: true },
+    rl: { type: String, require: true },
+    cl: { type: String, require: true },
     createdAt: {
         type: Date,
         default: Date.now(),
