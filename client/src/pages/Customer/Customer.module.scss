@@ -1,4 +1,5 @@
-.detail {
+@import "./../../constants/color.scss";
+.customer {
     &-section {
         width: 100%;
     }
@@ -8,9 +9,10 @@
         text-align: center;
     }
     &-main {
+        height: 60vh;
         margin: 9rem 20rem;
-
-        font-size: 1.7rem;
-        text-align: justify;
+        background: rgba($mainColor2, 0.4);
+        border: 2px solid $mainColor;
+        border-radius: 10px;
     }
 }

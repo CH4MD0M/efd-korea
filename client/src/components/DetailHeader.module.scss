@@ -1,0 +1,16 @@
+.header-container {
+    width: 100%;
+}
+.header-img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    margin-top: -10rem;
+    filter: brightness(50%);
+    z-index: -99;
+    transition: all 0.3s;
+
+    &:hover {
+        filter: brightness(100%);
+    }
+}

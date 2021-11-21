@@ -15,6 +15,7 @@ import {
     IntroPageHigh,
 } from "./pages/DetailPage/IntroPage";
 import Customer from "./pages/Customer/Customer";
+import Board from "./pages/Board/Board";
 import MetaClass from "./pages/MetaClass/MetaClass";
 import SignInPage from "./pages/User/SignInPage";
 import SignUpPage from "./pages/User/SignUpPage";
@@ -36,7 +37,8 @@ const App = () => {
                 <Route path="/intro/ele" exact component={IntroPageEle} />
                 <Route path="/intro/mid" exact component={IntroPageMid} />
                 <Route path="/intro/high" exact component={IntroPageHigh} />
-                <Route path="/customer" component={Customer} />
+                <Route path="/customer/qna" component={Customer} />
+                <Route path="/customer/board" component={Board} />
                 <Route path="/meta-class" component={MetaClass} />
 
                 {!authCtx.isLoggedIn && (

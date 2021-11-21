@@ -1,4 +1,5 @@
 import React from "react";
+import DetailHeader from "../../components/DetailHeader";
 
 // Css
 import classes from "./DetailPage.module.scss";
@@ -6,6 +7,7 @@ import classes from "./DetailPage.module.scss";
 export const InfoPageEle = () => {
     return (
         <section className={classes["detail-section"]}>
+            <DetailHeader header="header-1" />
             <h1 className={classes["detail-title"]}>교육안내 - Elementary</h1>
             <main className={classes["detail-main"]}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla
@@ -64,6 +66,7 @@ export const InfoPageEle = () => {
 export const InfoPageMid = () => {
     return (
         <section className={classes["detail-section"]}>
+            <DetailHeader header="header-1" />
             <h1 className={classes["detail-title"]}>교육안내 - Middle</h1>
             <main className={classes["detail-main"]}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla
@@ -122,6 +125,7 @@ export const InfoPageMid = () => {
 export const InfoPageHigh = () => {
     return (
         <section className={classes["detail-section"]}>
+            <DetailHeader header="header-1" />
             <h1 className={classes["detail-title"]}>교육안내 - High</h1>
             <main className={classes["detail-main"]}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla
