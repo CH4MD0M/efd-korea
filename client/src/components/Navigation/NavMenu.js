@@ -7,6 +7,9 @@ import classes from "./NavMenu.module.scss";
 const NavMenu = ({ item }) => {
     const [dropdown, setDropdown] = useState(false);
     const showDropdown = () => setDropdown(!dropdown);
+    const dropdownShow = dropdown
+        ? classes["dropdown-active"]
+        : classes["dropdown-Container"];
 
     return (
         <>
@@ -25,22 +28,22 @@ const NavMenu = ({ item }) => {
                         : null}
                 </div>
             </Link>
-
-            {dropdown &&
-                item.dropdown.map((item, index) => {
-                    // console.log(item);
-                    return (
-                        <Link
-                            to={item.path}
-                            key={index}
-                            className={classes.dropdownLink}
-                        >
-                            <span className={classes["dropdownLink-title"]}>
-                                {item.title}
-                            </span>
-                        </Link>
-                    );
-                })}
+            <div className={dropdownShow}>
+                {dropdown &&
+                    item.dropdown.map((item, index) => {
+                        return (
+                            <Link
+                                to={item.path}
+                                key={index}
+                                className={`${classes.dropdownLink} `}
+                            >
+                                <span className={classes["dropdownLink-title"]}>
+                                    {item.title}
+                                </span>
+                            </Link>
+                        );
+                    })}
+            </div>
         </>
     );
 };

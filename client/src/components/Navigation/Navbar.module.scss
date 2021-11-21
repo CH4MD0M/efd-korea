@@ -1,9 +1,12 @@
 .menu {
-    background: #699b78;
+    position: sticky;
+    top: 0;
+    background: transparent;
     height: 8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s;
 
     &-icon {
         display: flex;
@@ -12,9 +15,14 @@
         height: 8rem;
         margin-right: 3rem;
         color: azure;
+        cursor: pointer;
         & > svg {
             font-size: 4rem;
         }
+    }
+
+    &-active {
+        background: #699b78;
     }
 }
 .navigation {
@@ -26,9 +34,8 @@
     width: 30rem;
     height: 100vh;
     background: #699b78;
-    margin-top: 5rem;
-    transition: all 0.5s;
     z-index: 10;
+    transition: all 0.5s;
 
     &-right {
         right: 0;

@@ -25,16 +25,25 @@
     font-size: 1.5rem;
 }
 
+.dropdown-Container {
+    opacity: 0;
+    visibility: hidden;
+}
+.dropdown-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s;
+}
 .dropdownLink {
     background: #2f5966;
-    height: 60px;
+    height: 6rem;
     padding-left: 4rem;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: white;
     font-size: 18px;
-    transition: all 0.25s;
+    transition: all 0.4s;
 
     &:hover {
         background: #316a71;

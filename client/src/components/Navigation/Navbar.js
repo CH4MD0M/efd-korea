@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import AuthContext from "../../store/auth-context";
@@ -20,26 +20,49 @@ const Navigation = () => {
     const authCtx = useContext(AuthContext);
     const isLoggedIn = authCtx.isLoggedIn;
 
-    const [navbar, setNavbar] = useState(false);
+    const [isScroll, setIsScroll] = useState(false);
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const showNavbar = () => setIsNavbarOpen(!isNavbarOpen);
+    const navRight = isNavbarOpen ? classes["navigation-right"] : "";
+    const navBg = isScroll ? classes["menu-active"] : "";
 
-    const showNavbar = () => setNavbar(!navbar);
+    let navRef = useRef();
+    useEffect(() => {
+        let handler = (event) => {
+            if (!navRef.current.contains(event.target)) {
+                setIsNavbarOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        return () => {
+            document.removeEventListener("mousedown", handler);
+        };
+    });
 
-    const navRight = navbar ? classes["navigation-right"] : "";
+    // Scroll - Navigation Background
+    const changeBackground = () => {
+        if (window.scrollY >= 200) {
+            setIsScroll(true);
+        } else {
+            setIsScroll(false);
+        }
+    };
+    window.addEventListener("scroll", changeBackground);
 
     return (
         <>
-            <div className={classes.menu}>
+            <div className={`${classes.menu} ${navBg}`}>
                 <HomeButton />
-                <Link to="#" className={classes["menu-icon"]}>
+                <div className={classes["menu-icon"]}>
                     <MenuIcon onClick={showNavbar} />
-                </Link>
+                </div>
             </div>
 
-            <nav className={`${classes.navigation} ${navRight}`}>
+            <nav className={`${classes.navigation} ${navRight}`} ref={navRef}>
                 <div className={classes.navbarWrap}>
-                    <Link to="#" className={classes["menu-icon"]}>
+                    <div className={classes["menu-icon"]}>
                         <CloseIcon onClick={showNavbar} />
-                    </Link>
+                    </div>
                     {NavbarData.map((item, index) => {
                         return <NavMenu item={item} key={index} />;
                     })}
