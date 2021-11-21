@@ -1,8 +1,10 @@
+@import "./../../constants/color.scss";
+
 .footer {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #699b78;
+    background-color: $mainColor;
     height: 28vh;
 }
 
@@ -16,12 +18,15 @@
 .footer-item {
     margin: 0 3rem;
     font-size: 1.6rem;
-    padding: 1rem 2rem;
-    border: 1px solid black;
+    padding: 2rem 3rem;
+    border: 1px solid $white;
+    border-radius: 20px;
+    color: $white;
 }
 
 /* footer-context */
 .footer-context {
+    color: $white;
     margin-top: 5rem;
     display: flex;
     flex-direction: column;

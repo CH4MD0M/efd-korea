@@ -1,3 +1,5 @@
+@import "./../../constants//color.scss";
+
 .menu {
     position: sticky;
     top: 1rem;
@@ -9,6 +11,7 @@
     transition: all 0.5s;
     margin: 0 5rem;
     border-radius: 50px;
+    z-index: 100;
 
     &-icon {
         display: flex;
@@ -16,7 +19,7 @@
         align-items: center;
         height: 8rem;
         margin-right: 3rem;
-        color: azure;
+        color: $white;
         cursor: pointer;
         & > svg {
             font-size: 4rem;
@@ -25,11 +28,10 @@
 
     &-active {
         background: rgba($color: #ffffff, $alpha: 0.95);
-        -webkit-box-shadow: 6px 6px 11px -3px #000000;
-        box-shadow: 6px 6px 11px -3px #000000;
 
+        box-shadow: $box-shadow;
         .menu-icon {
-            color: black;
+            color: $black;
         }
     }
 }
@@ -37,12 +39,12 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 1rem;
+    top: 0;
     right: -100%;
     width: 30rem;
     height: 100vh;
-    background: #699b78;
-    z-index: 10;
+    background: $mainColor;
+    z-index: 200;
     transition: all 0.8s;
 
     &-right {
