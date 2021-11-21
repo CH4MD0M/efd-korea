@@ -7,7 +7,7 @@ import { URL } from "../../constants/config";
 import AuthContext from "../../store/auth-context";
 
 // Css
-import classes from "./AuthForm.module.scss";
+import classes from "./SignUpForm.module.scss";
 
 const SignUpForm = () => {
     const authCtx = useContext(AuthContext);

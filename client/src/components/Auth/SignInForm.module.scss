@@ -1,0 +1,98 @@
+@import "./../../constants/color.scss";
+
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5rem;
+    height: 100vh;
+
+    & > img {
+        width: 30%;
+        height: 50%;
+        margin-right: 20rem;
+        z-index: 2;
+    }
+}
+.signin-container::before {
+    content: "";
+    position: absolute;
+    height: 200rem;
+    width: 200rem;
+    top: -10%;
+    right: 48%;
+    transform: translateY(-50%);
+    background-image: linear-gradient(-45deg, $subColor 0%, $subColor2 100%);
+    transition: 1.8s ease-in-out;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.signin-form {
+    width: 95%;
+    height: 50rem;
+    max-width: 40rem;
+    border-radius: 6px;
+    background-color: $white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: $box-shadow;
+
+    & > h1 {
+        font-size: 4rem;
+        text-align: center;
+        color: $black;
+        margin: 7rem 0;
+    }
+}
+
+.signin-input {
+    margin: 2rem 0;
+
+    & > label {
+        text-align: left;
+        display: block;
+        color: $black;
+        font-weight: bold;
+        margin: 0 0 0.5rem 2rem;
+        font-size: 1.7rem;
+    }
+
+    & > input {
+        font-size: 2rem;
+        background-color: white;
+
+        border-radius: 4px;
+        border: none;
+        width: 90%;
+        height: 3rem;
+        text-align: left;
+        padding: 0.25rem;
+    }
+}
+
+.signin-btn {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > button {
+        margin-top: 1.2rem;
+        height: 4rem;
+        width: 90%;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+        background-color: $mainColor;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 2.5rem;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: $mainColor2;
+        }
+    }
+}

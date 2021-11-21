@@ -5,7 +5,7 @@ import AuthContext from "../../store/auth-context";
 import { URL } from "../../constants/config";
 
 // Css
-import classes from "./AuthForm.module.scss";
+import classes from "./SignInForm.module.scss";
 
 const SignInForm = (props) => {
     const history = useHistory();
@@ -43,34 +43,37 @@ const SignInForm = (props) => {
             });
     };
     return (
-        <section className={`${classes.auth} ${classes["auth-login"]}`}>
-            <h1> 로그인</h1>
-            <form onSubmit={SubmitHandler}>
-                <div className={classes.control}>
-                    <label htmlFor="email">이메일</label>
-                    <input
-                        type="email"
-                        id="email"
-                        required
-                        ref={emailInputRef}
-                    />
-                </div>
-                <div className={classes.control}>
-                    <label htmlFor="password">비밀번호</label>
-                    <input
-                        type="password"
-                        id="password"
-                        required
-                        ref={passwordInputRef}
-                    />
-                </div>
+        <div className={classes["signin-container"]}>
+            <img src="/image/User/login.svg" alt="login" />
+            <section className={classes["signin-form"]}>
+                <h1> 로그인</h1>
+                <form onSubmit={SubmitHandler}>
+                    <div className={classes["signin-input"]}>
+                        <label htmlFor="email">이메일</label>
+                        <input
+                            type="email"
+                            id="email"
+                            required
+                            ref={emailInputRef}
+                        />
+                    </div>
+                    <div className={classes["signin-input"]}>
+                        <label htmlFor="password">비밀번호</label>
+                        <input
+                            type="password"
+                            id="password"
+                            required
+                            ref={passwordInputRef}
+                        />
+                    </div>
 
-                <div className={classes.actions}>
-                    {!isLoading && <button>로그인 </button>}
-                    {isLoading && <p>요청중...</p>}
-                </div>
-            </form>
-        </section>
+                    <div className={classes["signin-btn"]}>
+                        {!isLoading && <button>로그인 </button>}
+                        {isLoading && <p>요청중...</p>}
+                    </div>
+                </form>
+            </section>
+        </div>
     );
 };
 

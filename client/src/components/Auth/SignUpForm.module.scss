@@ -1,7 +1,7 @@
 .auth {
     margin: 3rem auto;
     width: 95%;
-    height: 40rem;
+    height: 50rem;
     max-width: 40rem;
     border-radius: 6px;
     background-color: #699b78;
@@ -11,7 +11,7 @@
     color: white;
 }
 .auth-login {
-    height: 20rem;
+    height: 40rem;
 }
 
 .auth h1 {
@@ -86,4 +86,15 @@
     color: orange;
     font-size: 1.4rem;
     font-weight: 600;
+}
+
+// Signin
+.signin-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    & > img {
+        width: 30%;
+        height: 50vh;
+    }
 }
