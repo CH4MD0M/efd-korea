@@ -41,7 +41,7 @@ const Navigation = () => {
 
     // Scroll - Navigation Background
     const changeBackground = () => {
-        if (window.scrollY >= 200) {
+        if (window.scrollY >= 100) {
             setIsScroll(true);
         } else {
             setIsScroll(false);
@@ -52,7 +52,7 @@ const Navigation = () => {
     return (
         <>
             <div className={`${classes.menu} ${navBg}`}>
-                <HomeButton />
+                <HomeButton active={isScroll} />
                 <div className={classes["menu-icon"]}>
                     <MenuIcon onClick={showNavbar} />
                 </div>

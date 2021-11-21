@@ -1,12 +1,14 @@
 .menu {
     position: sticky;
-    top: 0;
+    top: 1rem;
     background: transparent;
-    height: 8rem;
+    height: 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s;
+    transition: all 0.5s;
+    margin: 0 5rem;
+    border-radius: 50px;
 
     &-icon {
         display: flex;
@@ -22,20 +24,26 @@
     }
 
     &-active {
-        background: #699b78;
+        background: rgba($color: #ffffff, $alpha: 0.95);
+        -webkit-box-shadow: 6px 6px 11px -3px #000000;
+        box-shadow: 6px 6px 11px -3px #000000;
+
+        .menu-icon {
+            color: black;
+        }
     }
 }
 .navigation {
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0;
+    top: 1rem;
     right: -100%;
     width: 30rem;
     height: 100vh;
     background: #699b78;
     z-index: 10;
-    transition: all 0.5s;
+    transition: all 0.8s;
 
     &-right {
         right: 0;

@@ -1,0 +1,28 @@
+.header-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: contain;
+    margin-top: -10rem;
+
+    & > video {
+        position: sticky;
+        object-fit: cover;
+        width: 100%;
+        height: 102%;
+        z-index: -1;
+    }
+    & > h1 {
+        color: #fff;
+        font-size: 8rem;
+        margin-top: -40rem;
+    }
+
+    & > p {
+        margin-top: 3rem;
+        color: #fff;
+        font-size: 3rem;
+    }
+}

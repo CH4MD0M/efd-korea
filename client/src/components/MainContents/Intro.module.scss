@@ -1,0 +1,17 @@
+.intro-container {
+    margin: 20rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > h1 {
+        font-size: 5rem;
+        text-align: center;
+    }
+}
+.intro-items {
+    display: grid;
+    grid-template-columns: repeat(4, 30rem);
+    grid-gap: 6rem;
+    padding: 10rem 0;
+}

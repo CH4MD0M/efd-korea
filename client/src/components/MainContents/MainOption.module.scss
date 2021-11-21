@@ -1,0 +1,20 @@
+.MainOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > svg {
+        font-size: 15rem;
+    }
+
+    &-title {
+        font-size: 2.6rem;
+        text-align: center;
+        margin: 2rem 0 3rem 0;
+    }
+    &-detail {
+        margin: 0 2rem;
+        text-align: justify;
+        font-size: 1.4rem;
+    }
+}
