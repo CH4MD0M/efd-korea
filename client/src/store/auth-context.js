@@ -31,6 +31,7 @@ export const AuthContextProvider = (props) => {
         setToken(null);
         localStorage.removeItem("token");
     };
+
     // 로그인
     const loginHandler = (token, expirationTime) => {
         setToken(token);

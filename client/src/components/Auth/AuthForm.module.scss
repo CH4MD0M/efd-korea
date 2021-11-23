@@ -1,0 +1,154 @@
+@import "./../../constants/color.scss";
+@import "./../../constants/animation.scss";
+
+.signin-container,
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5rem;
+    height: 100vh;
+}
+.signin-container::before {
+    content: "";
+    position: absolute;
+    height: 180rem;
+    width: 180rem;
+    top: -10%;
+    right: 50%;
+    background-image: linear-gradient(-45deg, $subColor 0%, $subColor2 100%);
+    transition: 1.8s ease-in-out;
+    border-radius: 50%;
+    z-index: 1;
+    animation: moveInBottom 0.8s forwards;
+}
+.signup-container::before {
+    content: "";
+    position: absolute;
+    height: 180rem;
+    width: 180rem;
+    top: -10%;
+    right: -50%;
+    background-image: linear-gradient(-45deg, $mainColor2 0%, $subColor2 100%);
+    transition: 1.8s ease-in-out;
+    border-radius: 50%;
+    z-index: 1;
+    animation: moveInBottom 0.8s forwards;
+}
+
+.image-panel {
+    width: 30%;
+    height: 50%;
+    margin-right: 16rem;
+    z-index: 2;
+    animation: moveInLeft 1s forwards;
+}
+.image-panel-signup {
+    margin-left: 16rem;
+    margin-right: 0;
+    animation: moveInRight 1s forwards;
+}
+.form-panel {
+    animation: moveInRight 1.8s forwards;
+}
+.form-panel-signup {
+    animation: moveInLeft 1.8s forwards;
+}
+.signin-form,
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 38rem;
+    border-radius: 6px;
+    background-color: $white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: $box-shadow;
+
+    & > h1 {
+        font-size: 4rem;
+        text-align: center;
+        color: $black;
+        margin: 7rem 0;
+    }
+}
+
+.signin-input,
+.signup-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2rem 0;
+    width: 40rem;
+
+    & > label {
+        padding-left: 4rem;
+        color: $black;
+        font-weight: bold;
+        font-size: 1.7rem;
+    }
+
+    & > input {
+        align-self: center;
+        width: 80%;
+        font-size: 2rem;
+        background-color: white;
+        border-radius: 4px;
+        border: none;
+        height: 3rem;
+        padding: 0.25rem;
+    }
+}
+
+.signin-btn,
+.signup-btn {
+    margin: 3rem 0;
+
+    & > button {
+        width: 80%;
+        height: 4rem;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+        background-color: $mainColor;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 2.5rem;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: $mainColor2;
+        }
+    }
+}
+.signin-link,
+.signup-link {
+    margin: 2rem;
+    text-align: right;
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    & > a,
+    a:visited,
+    a:focus,
+    a:active {
+        margin-left: 1rem;
+        color: $subColor2;
+        font: inherit;
+    }
+}
+
+.error-msg {
+    color: orangered;
+    padding-left: 4rem;
+    width: 80%;
+    transition: all 0.4s;
+    animation: moveInLeft 0.6s forwards;
+    & > p {
+        text-align: left;
+        font-size: 1.4rem;
+    }
+}

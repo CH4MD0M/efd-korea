@@ -8,7 +8,7 @@ const DetailHeader = (props) => {
         <div className={classes["header-container"]}>
             <img
                 className={classes["header-img"]}
-                src={`/image/header/${props.header}.jpg`}
+                src={`/image/Header/${props.header}.jpg`}
                 alt="header"
             />
         </div>
