@@ -44,19 +44,16 @@ export const AuthContextProvider = (props) => {
     const modalHandler = (msg) => {
         setErrorMsg(msg);
     };
-    const CloseModalHaldler = () => {
-        setErrorMsg(null);
-    };
 
     const contextValue = {
         token: token,
         errorMsg: errorMsg,
+        setErrorMsg: setErrorMsg,
         isLoggedIn: userIsLoggedIn,
         isErrorOccured: errorOccured,
         login: loginHandler,
         logout: logoutHandler,
         modal: modalHandler,
-        closeModal: CloseModalHaldler,
     };
 
     return (
