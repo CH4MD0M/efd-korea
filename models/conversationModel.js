@@ -6,29 +6,29 @@ const autoIncrement = require('./../utils/autoIncrement')(URI);
 const conversationSchema = new mongoose.Schema({
     language: {
         type: String,
-        require: true,
+        required: true,
         // enum: ['kl', 'cl', 'el', 'rl'],
     },
     level: {
         type: Number,
-        require: true,
+        required: true,
         // enum: [11, 12, 21, 22, 31, 32],
     },
     // 단원
     chapter: {
         type: Number,
-        require: true,
+        required: true,
         // enum: [1, 2, 3, 29],
     },
     classification: {
         type: Number,
-        require: true,
+        required: true,
         // enum: [1, 2, 3, 4, 5, 6, 7],
     },
-    kl: { type: String, require: true },
-    el: { type: String, require: true },
-    rl: { type: String, require: true },
-    cl: { type: String, require: true },
+    kl: { type: String, required: true },
+    el: { type: String, required: true },
+    rl: { type: String, required: true },
+    cl: { type: String, required: true },
     createdAt: {
         type: Date,
         default: Date.now(),

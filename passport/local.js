@@ -5,7 +5,11 @@ module.exports = (passport) => {
 
     passport.use(
         new LocalStrategy(
-            { usernameField: 'email', passwordField: 'password' },
+            {
+                usernameField: 'email',
+                passwordField: 'password',
+                session: true, // 세션에 저장 여부
+            },
             async (email, password, cb) => {
                 const user = await User.findOne({ email }).select('+password');
                 if (user) {

@@ -41,7 +41,7 @@ app.use(
     session({
         secret: process.env.JWT_SECRET, // 별도의 파일로 빼서 저장해야하는 비밀키
         resave: false, //세션을 언제나 저장할지 설정함
-        saveUninitialized: true, // 세션이 필요할 때만 구동시킴
+        saveUninitialized: false, // 빈 값도 저장
         // rolling: true, // 새로고침, 페이지 이동 등 활동하면 세션 갱신. resave도 true로 바꾸어야 함
         store: new MongoDBStore({
             uri,
@@ -52,17 +52,19 @@ app.use(
             secure: false, // https 이외에서도 사용 가능하게 만드는 옵션
             HttpOnly: true, // 자바스크립트로 쿠키에 접근 불가
             maxAge: 60 * 60 * 1000,
+            // maxAge: 5 * 1000,
         },
     })
 );
 
 const passport = require('./passport')(app);
-
 const authRouter = require('./routes/authRoutes')(passport);
 const studyRouter = require('./routes/studyRoutes');
+const boardRouter = require('./routes/boardRoutes');
 
 app.use('/study', studyRouter);
 app.use('/auth', authRouter);
+app.use('/board', boardRouter);
 
 app.use('/*', (req, res) => {
     res.sendFile(path.join(root, 'index.html'));

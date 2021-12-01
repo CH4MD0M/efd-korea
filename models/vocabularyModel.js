@@ -10,24 +10,24 @@ const vocabularySchema = new mongoose.Schema({
     },
     level: {
         type: Number,
-        require: true,
+        required: true,
     },
     // 단원
     chapter: {
         type: Number,
-        require: true,
+        required: true,
         // enum: [1, 2, 3, 29],
     },
     //구분, gubun
     classification: {
         type: Number,
-        require: true,
+        required: true,
         // enum: [1, 2, 3, 4, 5, 6, 7],
     },
-    kl: { type: String, require: true },
-    el: { type: String, require: true },
-    rl: { type: String, require: true },
-    cl: { type: String, require: true },
+    kl: { type: String, required: true },
+    el: { type: String, required: true },
+    rl: { type: String, required: true },
+    cl: { type: String, required: true },
     createdAt: {
         type: Date,
         default: Date.now(),

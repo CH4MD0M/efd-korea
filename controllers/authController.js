@@ -2,10 +2,13 @@ const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const sendEmail = require('./../utils/email');
 const crypto = require('crypto');
+const AppError = require('./../utils/appError');
 
 const createAuthenticationToken = () =>
-    crypto.randomBytes(256).toString('hex').substr(100, 5) +
-    crypto.randomBytes(256).toString('base64').substr(50, 5);
+    (
+        crypto.randomBytes(256).toString('hex').substr(100, 5) +
+        crypto.randomBytes(256).toString('base64').substr(50, 5)
+    ).replace(/[\!\*\'\(\)\;\:\@\&\=\+\$\,\/\?\#\[\]]/g, Math.floor(Math.random() * 10));
 
 const createAuthenticationEmail = (req, token) => {
     const url = `${req.protocol}://${req.get(
@@ -18,25 +21,15 @@ const createAuthenticationEmail = (req, token) => {
 exports.signIn = (passport) =>
     catchAsync(async (req, res, next) => {
         const { email, password } = req.body;
-        // 1) 이메일, 비밀번호로 사용자 존재 여부 확인
-        if (!email || !password) {
-            // Bad Request
-            return res.status(400).json({
-                status: 'FAIL',
-                message: '아이디 또는 비밀번호를 입력해주세요',
-            });
-        }
+
         // 2) 사용자가 있는지, 비밀번호가 올바른지 확인
         const user = await User.findOne({ email }).select('+password');
-        const correct = await user.correctPassword(password, user.password); // true || false
 
-        if (!user || !correct) {
-            // 미승인(unauthorized) || 비인증(unauthenticated)
+        if (!user || !(await user.correctPassword(password, user.password)))
             return res.status(401).json({
                 status: 'FAIL',
                 message: '아이디 또는 비밀번호가 정확한지 확인해주세요',
             });
-        }
 
         if (!user.email_verified) {
             const key_for_verify = createAuthenticationToken();
@@ -58,21 +51,16 @@ exports.signIn = (passport) =>
             });
         }
 
-        passport.authenticate('local', (err, user, info) => {
+        passport.authenticate('local', (err, user) => {
             if (err) {
                 return next(err);
-            }
-            if (!user) {
-                return res.status(401).json(info);
             }
 
             req.logIn(user, (err) => {
                 if (err) {
                     return next(err);
                 }
-
-                const session = req.session;
-                res.status(200).json({ status: 'SUCCESS', session });
+                res.status(200).json({ status: 'SUCCESS', user });
             });
         })(req, res, next);
     });
@@ -90,6 +78,7 @@ exports.redirect = (req, res, next) => {
 
 exports.logout = (req, res, next) => {
     req.logout();
+    req.session.destroy();
     req.session.save(() => {
         res.status(200).json({ status: 'SUCCESS' });
     });
@@ -164,14 +153,43 @@ exports.emailVerification = catchAsync(async (req, res, next) => {
     });
 });
 
-/*
+exports.isLoggedIn = (req, res, next) => {
+    // return the true || false
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        res.status(403).json({ status: 'FAIL', message: '로그인 필요' });
+    }
+};
+
+// 로그인하지 않은 사람만 접근 가능
+exports.isNotLoggedIn = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
-    // 1) 토큰 가져오기 및 확인
+    if (req.user) {
+        next();
+    } else {
+        res.status(400).json({
+            status: 'FAIL',
+            message: '로그인을 하지 않았습니다.',
+        });
+    }
+
+    /* // 1) 토큰 가져오기 및 확인
     let token;
+
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.jwt) {
+        token = req.cookies.jwt;
     }
-    // console.log(req.headers);
+
     if (!token) {
         return next(
             new AppError('로그인 하지 않았습니다. 로그인을 해주시기 바랍니다.', 401)
@@ -186,7 +204,14 @@ exports.protect = catchAsync(async (req, res, next) => {
     if (!currentUser) {
         return next(new AppError('사용자의 토큰이 더 이상 존재하지 않습니다.', 401));
     }
+
+    // 4) 토큰 발급 후 사용자가 비밀번호를 변경했는지 확인
+    if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return next(
+            new AppError('최근에 비밀번호를 변경하셨어요. 다시 로그인 하세요', 401)
+        );
+    }
+
     req.user = currentUser;
-    next();
+    res.locals.user = currentUser; */
 });
-*/
