@@ -1,18 +1,50 @@
 @import "./../../constants/color.scss";
 .customer {
     &-section {
-        width: 100%;
-    }
-    &-title {
-        margin-top: 4rem;
-        font-size: 4rem;
+        box-sizing: border-box;
+        width: 96rem;
+        margin: 0 auto;
         text-align: center;
     }
-    &-main {
-        height: 60vh;
-        margin: 9rem 20rem;
-        background: rgba($mainColor2, 0.4);
-        border: 2px solid $mainColor;
-        border-radius: 10px;
+    &-title {
+        width: 100%;
+        margin: 4rem 0;
+        padding: 2rem;
+        font-size: 4rem;
+        background-color: #fdfdfd;
+        border: 1px solid #c9c9c9;
+        border-radius: 5px;
     }
+    &-links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 3.5rem;
+        font-weight: 700;
+    }
+    &-link {
+        width: 100%;
+        height: 6rem;
+        line-height: 6rem;
+        color: rgba($color: #000000, $alpha: 0.4);
+        border-bottom: 3px solid #c9c9c9;
+        transition: all 0.3s;
+    }
+}
+
+.active {
+    border-bottom: 3px solid $subColor;
+    color: $subColor;
+    transition: all 0.3s;
+}
+
+.customer-container {
+    width: 100%;
+    height: auto;
+}
+
+.qna-lists,
+.board-lists {
+    margin: 2rem 0;
+    padding: 2rem;
 }

@@ -29,15 +29,16 @@ export const NavbarData = [
             { title: "High", path: "/intro/high" },
         ],
     },
-    {
-        title: "교객지원",
-        icon: <PersonPinIcon />,
-        iconClosed: <ArrowDropDownIcon />,
-        iconOpened: <ArrowDropUpIcon />,
-        dropdown: [
-            { title: "자주 묻는 질문", path: "/customer/qna" },
-            { title: "공지사항", path: "/customer/board" },
-        ],
-    },
+    // {
+    //     title: "교객지원",
+    //     icon: <PersonPinIcon />,
+    //     iconClosed: <ArrowDropDownIcon />,
+    //     iconOpened: <ArrowDropUpIcon />,
+    //     dropdown: [
+    //         { title: "자주 묻는 질문", path: "/customer/qna" },
+    //         { title: "공지사항", path: "/customer/board" },
+    //     ],
+    // },
+    { title: "고객지원", path: "/customer/qna", icon: <PersonPinIcon /> },
     { title: "Meta-Class", path: "/meta-class", icon: <VrpanoIcon /> },
 ];
