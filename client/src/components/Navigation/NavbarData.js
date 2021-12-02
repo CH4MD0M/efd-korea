@@ -7,7 +7,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 export const NavbarData = [
     {
-        title: "교육안내",
+        title: "교육과정소개",
         icon: <BorderColorIcon />,
         iconClosed: <ArrowDropDownIcon />,
         iconOpened: <ArrowDropUpIcon />,

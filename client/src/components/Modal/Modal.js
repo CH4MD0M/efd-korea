@@ -25,7 +25,7 @@ const Modal = (props) => {
             setIsModalOpen(false);
             window.removeEventListener("keydown", closeModalByKeyboard);
         };
-    });
+    }, []);
 
     return (
         <div className={classes["modal__backdrop"]}>

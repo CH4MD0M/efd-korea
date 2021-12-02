@@ -1,6 +1,6 @@
 import React from "react";
 
-import DetailHeader from "../../components/DetailHeader";
+import DetailHeader from "../../components/Detail/DetailHeader";
 
 // Css
 import classes from "./DetailPage.module.scss";
