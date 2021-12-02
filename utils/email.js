@@ -1,9 +1,9 @@
 'use strict';
 const nodemailer = require('nodemailer');
+const catchAsync = require('./../utils/catchAsync');
 
-const sendEmail = (options) => {
+const sendEmail = catchAsync(async (options) => {
     // 메일발송 함수
-
     let transporter = nodemailer.createTransport({
         service: process.env.EMAIL_SERVICE, // 메일 보내는 곳
         port: process.env.EMAIL_PORT,
@@ -25,5 +25,5 @@ const sendEmail = (options) => {
 
     // 메일 발송
     transporter.sendMail(mailOptions);
-};
+});
 module.exports = sendEmail;

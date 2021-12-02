@@ -4,9 +4,9 @@ const catchAsync = require('./../utils/catchAsync');
 const readCSV = require('./../utils/readCSV');
 
 exports.getAllVoca = catchAsync(async (req, res, next) => {
-    const voca = await Voca.find();
+    const data = await Voca.find();
 
-    res.status(200).json({ status: 'SUCCESS', data: { voca } });
+    res.status(200).json({ status: 'SUCCESS', data });
 });
 
 exports.createVoca = catchAsync(async (req, res, next) => {
@@ -18,9 +18,9 @@ exports.createVoca = catchAsync(async (req, res, next) => {
 });
 
 exports.getConverse = catchAsync(async (req, res, next) => {
-    const converse = await Conversation.find();
+    const data = await Conversation.find();
 
-    res.status(200).json({ status: 'SUCCESS', data: { converse } });
+    res.status(200).json({ status: 'SUCCESS', data });
 });
 
 exports.createConverse = catchAsync(async (req, res, next) => {

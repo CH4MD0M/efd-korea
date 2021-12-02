@@ -5,3 +5,5 @@ node_modules
 *.env
 
 client/src/setupProxy.js
+
+dev-data
