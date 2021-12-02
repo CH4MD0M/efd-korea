@@ -2,6 +2,7 @@
     margin: 3rem 0;
 }
 .title {
+    cursor: pointer;
     font-size: 2.5rem;
     font-weight: 700;
     text-align: left;
@@ -10,11 +11,16 @@
 }
 
 .detail {
-    max-height: 10rem;
+    min-height: 10rem;
     width: 100%;
-    margin: 2.5rem 0 6rem 1.5rem;
 }
 .content {
-    font-size: 2rem;
+    margin: 2.5rem 0 2rem 1.5rem;
+    font-size: 2.8rem;
     text-align: justify;
+    display: flex;
+    flex-direction: column;
+    & > span {
+        margin: 7px 0;
+    }
 }

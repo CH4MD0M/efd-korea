@@ -12,7 +12,11 @@ const QnaItem = ({ title, content }) => {
             </p>
             {isActive && (
                 <div className={classes.detail}>
-                    <p className={classes.content}>{content}</p>
+                    <p className={classes.content}>
+                        {content.split("\n").map((line) => {
+                            return <span>{line}</span>;
+                        })}
+                    </p>
                 </div>
             )}
         </li>
