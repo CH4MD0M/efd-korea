@@ -6,13 +6,6 @@ import classes from "./Footer.module.scss";
 const Footer = () => {
     return (
         <div className={classes.footer}>
-            <ul className={classes["footer-items"]}>
-                <li className={classes["footer-item"]}>교육안내</li>
-                <li className={classes["footer-item"]}>교육자료소개</li>
-                <li className={classes["footer-item"]}>고객지원</li>
-                <li className={classes["footer-item"]}>My Class</li>
-            </ul>
-
             <div className={classes["footer-context"]}>
                 <h3 className={classes.copyright}>
                     &copy; Copyright 2020 by efdkorea.
@@ -28,3 +21,12 @@ const Footer = () => {
 };
 
 export default Footer;
+
+/* 
+로고 | 서비스 이용 약관 | 개인정보 처리방침
+|주식회사 efdkorea
+    대표자: 홍길동 | 사업자등록번호: 
+    주소
+    전화번호 | 이메일
+|ⓒEFDKOREA. ALL RIGHTS RESERVED
+*/

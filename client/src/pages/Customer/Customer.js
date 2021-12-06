@@ -21,14 +21,14 @@ const Customer = () => {
             </div>
             <div className={classes["customer-links"]}>
                 <NavLink
-                    to={"/customer/qna"}
+                    to="/customer/qna"
                     className={classes["customer-link"]}
                     activeClassName={classes.active}
                 >
                     자주묻는질문
                 </NavLink>
                 <NavLink
-                    to={"/customer/board"}
+                    to="/customer/board"
                     className={classes["customer-link"]}
                     activeClassName={classes.active}
                 >

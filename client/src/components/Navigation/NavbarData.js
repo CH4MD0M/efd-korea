@@ -7,38 +7,27 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 export const NavbarData = [
     {
-        title: "교육과정소개",
+        title: "한국어 교육과정소개",
         icon: <BorderColorIcon />,
         iconClosed: <ArrowDropDownIcon />,
         iconOpened: <ArrowDropUpIcon />,
         dropdown: [
-            { title: "Elementary", path: "/info/ele" },
-            { title: "Middle", path: "/info/mid" },
-            { title: "High", path: "/info/high" },
+            { title: "Intro", path: "/info-Kor/intro" },
+            { title: "Sample Video", path: "/info-Kor/sample" },
         ],
     },
     {
-        title: "교육자료소개",
-
-        icon: <MenuBookIcon />,
+        title: "영어 교육과정소개",
+        icon: <BorderColorIcon />,
         iconClosed: <ArrowDropDownIcon />,
         iconOpened: <ArrowDropUpIcon />,
         dropdown: [
-            { title: "Elementary", path: "/intro/ele" },
-            { title: "Middle", path: "/intro/mid" },
-            { title: "High", path: "/intro/high" },
+            { title: "Elementary", path: "/info-Eng/ele" },
+            { title: "Middle", path: "/info-Eng/mid" },
+            { title: "High", path: "/info-Eng/high" },
         ],
     },
-    // {
-    //     title: "교객지원",
-    //     icon: <PersonPinIcon />,
-    //     iconClosed: <ArrowDropDownIcon />,
-    //     iconOpened: <ArrowDropUpIcon />,
-    //     dropdown: [
-    //         { title: "자주 묻는 질문", path: "/customer/qna" },
-    //         { title: "공지사항", path: "/customer/board" },
-    //     ],
-    // },
-    { title: "고객지원", path: "/customer/qna", icon: <PersonPinIcon /> },
+
     { title: "Meta-Class", path: "/meta-class", icon: <VrpanoIcon /> },
+    { title: "고객지원", path: "/customer/qna", icon: <PersonPinIcon /> },
 ];

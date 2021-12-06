@@ -28,16 +28,11 @@ function DetailItem({ title, content, subtitle, subcontent }) {
                                           className={classes["content-context"]}
                                       >
                                           {Array.isArray(context.content)
-                                              ? context.content.map(
-                                                    (line, index) => {
-                                                        return (
-                                                            <span>
-                                                                {index + 1}.{" "}
-                                                                {line}
-                                                            </span>
-                                                        );
-                                                    }
-                                                )
+                                              ? context.content.map((line) => {
+                                                    return (
+                                                        <span>- {line}</span>
+                                                    );
+                                                })
                                               : context.content
                                                     .split("\n")
                                                     .map((line) => {

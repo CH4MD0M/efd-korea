@@ -1,12 +1,16 @@
 import React from "react";
-import { infoEle, infoMid, infoHigh } from "../../components/Detail/DetailData";
+import {
+    infoEle,
+    infoMid,
+    infoHigh,
+} from "../../components/Detail/InfoEngData";
 import DetailHeader from "../../components/Detail/DetailHeader";
-import DetailItem from "../../components/Detail/DetailItem";
+import DetailItem from "../../components/Detail/InfoItem";
 
 // Css
 import classes from "./DetailPage.module.scss";
 
-export const InfoPageEle = () => {
+export const InfoEngEle = () => {
     const { title, content, subtitle, subcontent } = infoEle;
     return (
         <section className={classes["detail-section"]}>
@@ -22,7 +26,7 @@ export const InfoPageEle = () => {
         </section>
     );
 };
-export const InfoPageMid = () => {
+export const InfoEngMid = () => {
     const { title, content, subtitle, subcontent } = infoMid;
 
     return (
@@ -39,7 +43,7 @@ export const InfoPageMid = () => {
         </section>
     );
 };
-export const InfoPageHigh = () => {
+export const InfoEngHigh = () => {
     const { title, content, subtitle, subcontent } = infoHigh;
     return (
         <section className={classes["detail-section"]}>

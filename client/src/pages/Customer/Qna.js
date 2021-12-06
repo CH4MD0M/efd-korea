@@ -1,7 +1,7 @@
 import React from "react";
 
 import { QnaData } from "../../components/Customer/QnaData";
-import QnaItem from "../../components/Customer/QnaItem";
+import QnaItem from "../../components/Accordion/Accordion";
 
 // Css
 import classes from "./Customer.module.scss";
