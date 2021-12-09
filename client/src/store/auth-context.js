@@ -33,12 +33,12 @@ export const AuthContextProvider = (props) => {
     };
 
     // 로그인
-    const loginHandler = (token, expirationTime) => {
+    const loginHandler = (token) => {
         setToken(token);
         localStorage.setItem("token", token);
 
-        const remainigTime = calculateReaminingTime(expirationTime);
-        setTimeout(logoutHandler, remainigTime);
+        // const remainigTime = calculateReaminingTime(expirationTime);
+        // setTimeout(logoutHandler, remainigTime);
     };
     // 모달
     const modalHandler = (msg) => {

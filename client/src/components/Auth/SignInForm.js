@@ -29,10 +29,7 @@ const SignInForm = (props) => {
         axios
             .post(url, credentials)
             .then((response) => {
-                authCtx.login(
-                    response.data.session.passport.user._id,
-                    response.data.session.cookie.expires
-                );
+                authCtx.login(response.data.user._id);
                 history.replace("/");
             })
             .catch((error) => {
