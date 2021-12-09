@@ -24,4 +24,6 @@ yarn-error.log*
 
 # private file
 src/constants
+public/videos
+public/image
 

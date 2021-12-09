@@ -1,5 +1,4 @@
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import VrpanoIcon from "@mui/icons-material/Vrpano";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";

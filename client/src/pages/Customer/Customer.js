@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 
 import Qna from "./Qna";

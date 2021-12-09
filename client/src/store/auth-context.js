@@ -10,13 +10,13 @@ const AuthContext = React.createContext({
     modal: (errorMsg) => {},
 });
 
-const calculateReaminingTime = (expirationTime) => {
-    const currentTime = new Date().getTime();
-    const adjExpirationTime = new Date(expirationTime).getTime();
-    const remainingDuration = adjExpirationTime - currentTime;
+// const calculateReaminingTime = (expirationTime) => {
+//     const currentTime = new Date().getTime();
+//     const adjExpirationTime = new Date(expirationTime).getTime();
+//     const remainingDuration = adjExpirationTime - currentTime;
 
-    return remainingDuration;
-};
+//     return remainingDuration;
+// };
 
 export const AuthContextProvider = (props) => {
     const initialToken = localStorage.getItem("token");
