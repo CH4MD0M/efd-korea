@@ -10,7 +10,8 @@ import {
     InfoEngMid,
     InfoEngHigh,
 } from "./pages/DetailPage/InfoEngPage";
-import { InfoKorIntro, InfoKorVideo } from "./pages/DetailPage/InfoKorPage";
+import InfoKorPage from "./pages/DetailPage/InfoKorPage";
+
 import Customer from "./pages/Customer/Customer";
 import MetaClass from "./pages/MetaClass/MetaClass";
 import SignInPage from "./pages/User/SignInPage";
@@ -27,11 +28,11 @@ const App = () => {
         <Layout>
             <Switch>
                 <Route path="/" exact component={MainPage} />
+                <Route path="/info-Kor" exact component={InfoKorPage} />
                 <Route path="/info-Eng/ele" exact component={InfoEngEle} />
                 <Route path="/info-Eng/mid" exact component={InfoEngMid} />
                 <Route path="/info-Eng/high" exact component={InfoEngHigh} />
-                <Route path="/info-Kor/intro" exact component={InfoKorIntro} />
-                <Route path="/info-Kor/sample" exact component={InfoKorVideo} />
+
                 {/* <Route path="/intro/:school" exact component={IntroPage} /> */}
                 <Route path="/customer" component={Customer} />
                 <Route path="/meta-class" component={MetaClass} />

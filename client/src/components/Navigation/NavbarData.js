@@ -8,13 +8,8 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 export const NavbarData = [
     {
         title: "한국어 교육과정소개",
+        path: "/info-Kor",
         icon: <BorderColorIcon />,
-        iconClosed: <ArrowDropDownIcon />,
-        iconOpened: <ArrowDropUpIcon />,
-        dropdown: [
-            { title: "Intro", path: "/info-Kor/intro" },
-            { title: "Sample Video", path: "/info-Kor/sample" },
-        ],
     },
     {
         title: "영어 교육과정소개",

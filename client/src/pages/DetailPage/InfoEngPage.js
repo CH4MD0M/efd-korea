@@ -5,7 +5,7 @@ import {
     infoHigh,
 } from "../../components/Detail/InfoEngData";
 import DetailHeader from "../../components/Detail/DetailHeader";
-import DetailItem from "../../components/Detail/InfoItem";
+import InfoEngItem from "../../components/Detail/InfoEngItem";
 
 // Css
 import classes from "./DetailPage.module.scss";
@@ -16,7 +16,7 @@ export const InfoEngEle = () => {
         <section className={classes["detail-section"]}>
             <DetailHeader header="header-1" />
             <main className={classes["detail-container"]}>
-                <DetailItem
+                <InfoEngItem
                     title={title}
                     content={content}
                     subtitle={subtitle}
@@ -33,7 +33,7 @@ export const InfoEngMid = () => {
         <section className={classes["detail-section"]}>
             <DetailHeader header="header-1" />
             <main className={classes["detail-container"]}>
-                <DetailItem
+                <InfoEngItem
                     title={title}
                     content={content}
                     subtitle={subtitle}
@@ -49,7 +49,7 @@ export const InfoEngHigh = () => {
         <section className={classes["detail-section"]}>
             <DetailHeader header="header-1" />
             <main className={classes["detail-container"]}>
-                <DetailItem
+                <InfoEngItem
                     title={title}
                     content={content}
                     subtitle={subtitle}

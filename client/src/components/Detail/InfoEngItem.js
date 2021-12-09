@@ -3,7 +3,7 @@ import React from "react";
 // Css
 import classes from "./DetailItem.module.scss";
 
-function DetailItem({ title, content, subtitle, subcontent }) {
+function InfoEngItem({ title, content, subtitle, subcontent }) {
     return (
         <>
             <div className={classes["detail__main1"]}>
@@ -55,4 +55,4 @@ function DetailItem({ title, content, subtitle, subcontent }) {
     );
 }
 
-export default DetailItem;
+export default InfoEngItem;
