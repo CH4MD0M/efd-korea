@@ -13,7 +13,7 @@ import {
 import InfoKorPage from "./pages/DetailPage/InfoKorPage";
 
 import Customer from "./pages/Customer/Customer";
-import MetaClass from "./pages/MetaClass/MetaClass";
+import MetaClass from "./pages/DetailPage/MetaClass";
 import SignInPage from "./pages/User/SignInPage";
 import SignUpPage from "./pages/User/SignUpPage";
 import Profile from "./pages/User/ProfilePage";

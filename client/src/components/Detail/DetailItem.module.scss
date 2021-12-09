@@ -25,7 +25,7 @@
 .content {
     margin: 3rem 0;
     &-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         margin-bottom: 1rem;
     }
     &-context {
@@ -37,4 +37,28 @@
             font-size: 1.5rem;
         }
     }
+}
+
+// ////////////////////////////////////////////////////////
+// meta-class
+.paragraph {
+    margin-bottom: 1rem;
+}
+.title-small {
+    font-size: 2rem;
+    margin: 5rem 0 1rem 0;
+}
+.list {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    position: relative;
+    text-align: justify;
+    &::before {
+        content: "✔︎";
+        margin-right: 1rem;
+    }
+}
+
+.image {
+    margin: 4rem 20rem;
 }

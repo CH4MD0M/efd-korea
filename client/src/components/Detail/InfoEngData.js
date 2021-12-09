@@ -71,6 +71,7 @@ export const infoEle = {
             ],
         },
     ],
+    videoPath: "/videos/Lesson_1.wmv",
 };
 export const infoMid = {
     title: "중등부 과정(Middle School Course)",
@@ -88,6 +89,7 @@ export const infoMid = {
         "Earth Science [실험적 방법들을 교육]",
         "Physical Science [보다 심화된 수학적 접근을 통한 실험방법 교육]",
     ],
+    videoPath: "/videos/Lesson_2.wmv",
 };
 export const infoHigh = {
     title: "고등부 과정(High School Course)",
@@ -167,4 +169,5 @@ export const infoHigh = {
             Let the Rivers Run`,
         },
     ],
+    videoPath: "/videos/Lesson_3.wmv",
 };

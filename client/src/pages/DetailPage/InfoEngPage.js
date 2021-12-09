@@ -11,7 +11,7 @@ import InfoEngItem from "../../components/Detail/InfoEngItem";
 import classes from "./DetailPage.module.scss";
 
 export const InfoEngEle = () => {
-    const { title, content, subtitle, subcontent } = infoEle;
+    const { title, content, subtitle, subcontent, videoPath } = infoEle;
     return (
         <section className={classes["detail-section"]}>
             <DetailHeader header="header-1" />
@@ -21,6 +21,7 @@ export const InfoEngEle = () => {
                     content={content}
                     subtitle={subtitle}
                     subcontent={subcontent}
+                    videoPath={videoPath}
                 />
             </main>
         </section>

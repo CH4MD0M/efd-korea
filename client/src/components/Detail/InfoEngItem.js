@@ -3,7 +3,8 @@ import React from "react";
 // Css
 import classes from "./DetailItem.module.scss";
 
-function InfoEngItem({ title, content, subtitle, subcontent }) {
+const InfoEngItem = ({ title, content, subtitle, subcontent, videoPath }) => {
+    console.log(videoPath);
     return (
         <>
             <div className={classes["detail__main1"]}>
@@ -51,8 +52,14 @@ function InfoEngItem({ title, content, subtitle, subcontent }) {
                           })}
                 </div>
             </div>
+            <div className={classes["detail__main1"]}>
+                <h1 className={classes["title"]}>{title}</h1>
+                <div className={classes["contents-container"]}>
+                    <video src={videoPath} />
+                </div>
+            </div>
         </>
     );
-}
+};
 
 export default InfoEngItem;
