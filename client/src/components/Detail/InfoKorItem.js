@@ -1,5 +1,6 @@
 import React from "react";
 import Accordion from "../Accordion/Accordion.js";
+import { RenderImage } from "../Layout/Render.js";
 
 // Css
 import classes from "./DetailItem.module.scss";
@@ -29,10 +30,9 @@ function InfoKorItem({ title, content, subtitle, subcontent }) {
                                         return <span>- {line}</span>;
                                     })}
                                 </div>
-                                <Accordion
-                                    title="강의 목록"
-                                    content={context.imgPath}
-                                />
+                                <Accordion title="강의 목록">
+                                    <RenderImage data={context.imgPath} />
+                                </Accordion>
                             </div>
                         );
                     })}

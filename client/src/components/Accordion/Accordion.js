@@ -3,39 +3,17 @@ import React, { useState } from "react";
 // Css
 import classes from "./Acoordion.module.scss";
 
-const QnaItem = ({ title, content }) => {
+const Accordion = (props) => {
     const [isActive, setIsActive] = useState(false);
+
     return (
         <li className={classes["accordion-list"]}>
             <p className={classes.title} onClick={() => setIsActive(!isActive)}>
-                {title}
+                {props.title}
             </p>
-            {Array.isArray(content)
-                ? isActive && (
-                      <div className={classes.detail}>
-                          {content.map((item) => {
-                              return (
-                                  <p className={classes.content}>
-                                      <div>
-                                          <span>{item.idx}</span>
-                                          <p>{item.title}</p>
-                                      </div>
-                                  </p>
-                              );
-                          })}
-                      </div>
-                  )
-                : isActive && (
-                      <div className={classes.detail}>
-                          <p className={classes.content}>
-                              {content.split("\n").map((line) => {
-                                  return <span>{line}</span>;
-                              })}
-                          </p>
-                      </div>
-                  )}
+            {isActive && <div className={classes.detail}>{props.children}</div>}
         </li>
     );
 };
 
-export default QnaItem;
+export default Accordion;

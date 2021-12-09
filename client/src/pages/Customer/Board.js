@@ -1,7 +1,8 @@
 import React from "react";
+import Accordion from "../../components/Accordion/Accordion";
 
 import { BoardData } from "../../components/Board/BoardData";
-import BoardItem from "../../components/Board/BoardItem";
+import { RenderParagraph } from "../../components/Layout/Render";
 
 // Css
 import classes from "./Customer.module.scss";
@@ -12,7 +13,9 @@ const board = (props) => {
         <div className={classes["customer-container"]}>
             <ul className={classes["board-lists"]}>
                 {BoardData.map(({ title, content }) => (
-                    <BoardItem title={title} content={content} />
+                    <Accordion title={title}>
+                        <RenderParagraph data={content} />
+                    </Accordion>
                 ))}
             </ul>
         </div>
