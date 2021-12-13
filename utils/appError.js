@@ -1,3 +1,4 @@
+// 알 수 없는 오류일 때는 사용이 안 됨
 class AppError extends Error {
     constructor(message, statusCode) {
         super(message);

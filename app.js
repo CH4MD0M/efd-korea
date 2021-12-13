@@ -11,6 +11,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 if (process.env.NODE_ENV === 'development') {
@@ -31,8 +32,8 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Serving static files
-const env = process.env.NODE_ENV === 'development' ? 'public' : 'build';
-const root = require('path').join(__dirname, 'client', `${env}`);
+const env = process.env.NODE_ENV === 'development' ? 'public' : 'client/build';
+const root = require('path').join(__dirname, `${env}`);
 app.use(express.static(root));
 
 const uri = require('./config/URI')(process.env);
@@ -70,9 +71,6 @@ app.use('/*', (req, res) => {
     res.sendFile(path.join(root, 'index.html'));
 });
 
-// 익스프레스는 순서대로 실행되기에 오류 처리기는 다른 모든 미들웨어 뒤에 정의해야 함.
-app.all('*', (req, res, next) => {
-    next(new AppError(`${req.originalUrl} 경로를 찾을 수 없습니다.`, 404));
-});
+app.use(globalErrorHandler);
 
 module.exports = app;

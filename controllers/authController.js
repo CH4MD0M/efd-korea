@@ -22,7 +22,6 @@ exports.signIn = (passport) => (req, res, next) => {
         'local',
         catchAsync(async (err, user) => {
             if (err) {
-                console.error(err);
                 return next(err);
             }
 
@@ -53,9 +52,9 @@ exports.signIn = (passport) => (req, res, next) => {
 
             req.logIn(user, (err) => {
                 if (err) {
-                    console.error(err);
                     return next(err);
                 }
+
                 res.status(200).json({ status: 'SUCCESS', user });
             });
         })
