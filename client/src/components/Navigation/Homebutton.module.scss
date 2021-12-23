@@ -1,3 +1,5 @@
+@import "../../constants/mixin.scss";
+
 .home-button {
     font-size: 4rem;
     color: white;
@@ -9,4 +11,18 @@
 
 .active {
     color: black;
+}
+
+@include tablet {
+    .home-button {
+        font-size: 4rem;
+        margin-left: 3rem;
+    }
+}
+
+@include mobile {
+    .home-button {
+        font-size: 3rem;
+        margin-left: 2rem;
+    }
 }

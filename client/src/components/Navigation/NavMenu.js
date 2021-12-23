@@ -20,7 +20,7 @@ const NavMenu = ({ item }) => {
             >
                 <div className={classes["navLink-icon"]}>{item.icon}</div>
                 <span className={classes["navLink-title"]}>{item.title}</span>
-                <div>
+                <div className={classes["navLink-icon"]}>
                     {item.dropdown && dropdown
                         ? item.iconOpened
                         : item.dropdown

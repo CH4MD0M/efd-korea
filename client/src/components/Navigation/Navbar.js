@@ -75,7 +75,7 @@ const Navigation = () => {
                                 <span className={styles["navLink-title"]}>
                                     로그인
                                 </span>
-                                <div></div>
+                                <div className={classes.blank}></div>
                             </Link>
                         )}
                         {isLoggedIn && <LogoutButton />}
