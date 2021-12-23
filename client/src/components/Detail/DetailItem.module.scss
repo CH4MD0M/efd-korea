@@ -1,4 +1,6 @@
 @import "../../constants/color.scss";
+@import "../../constants/mixin.scss";
+
 .detail {
     &__main1,
     &__main2 {
@@ -61,4 +63,40 @@
 
 .image {
     margin: 4rem 20rem;
+}
+
+@include tablet {
+    .detail {
+        &__main1,
+        &__main2 {
+            padding: 10rem 5rem;
+        }
+    }
+    .title,
+    .subtitle {
+        font-size: 4.5rem;
+    }
+    .contents-container {
+        font-size: 3rem;
+    }
+    .content {
+        margin: 3rem 0;
+        &-title {
+            font-size: 3.8rem;
+        }
+        &-context {
+            font-size: 3.2rem;
+            & > span {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+@include mobile {
+    .detail {
+        &__main1,
+        &__main2 {
+            padding: 10rem 3rem;
+        }
+    }
 }
