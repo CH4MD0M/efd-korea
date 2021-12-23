@@ -1,5 +1,6 @@
-@import "./../../constants/color.scss";
-@import "./../../constants/animation.scss";
+@import "../../constants/color.scss";
+@import "../../constants/animation.scss";
+@import "../../constants/mixin.scss";
 
 .signin-container,
 .signup-container {
@@ -50,9 +51,11 @@
 }
 .form-panel {
     animation: moveInRight 1.8s forwards;
+    z-index: 3;
 }
 .form-panel-signup {
     animation: moveInLeft 1.8s forwards;
+    z-index: 3;
 }
 .signin-form,
 .signup-form {
@@ -150,5 +153,43 @@
     & > p {
         text-align: left;
         font-size: 1.4rem;
+    }
+}
+
+@include tablet {
+    // sign-in
+    .image-panel {
+        width: 45%;
+        margin-right: 4rem;
+    }
+    .signin-container::before {
+        top: -10%;
+        right: 10%;
+    }
+    // sign-up
+    .image-panel-signup {
+        width: 45%;
+        margin-left: 4rem;
+    }
+    .signup-container::before {
+        top: -10%;
+        left: 10%;
+    }
+}
+@include mobile {
+    .image-panel {
+        display: none;
+    }
+    .signin-container::before {
+        top: -10%;
+        right: -40%;
+    }
+    // sign-up
+    .image-panel-signup {
+        display: none;
+    }
+    .signup-container::before {
+        top: -10%;
+        left: -40%;
     }
 }
