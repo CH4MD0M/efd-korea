@@ -1,3 +1,5 @@
+@import "../../constants/mixin.scss";
+
 .header-container {
     height: 80vh;
     width: 100%;
@@ -23,6 +25,34 @@
     & > p {
         margin-top: 3rem;
         color: #fff;
-        font-size: 3rem;
+        font-size: 4rem;
+    }
+}
+
+@include tablet {
+    .header-container {
+        & > h1 {
+            font-size: 6rem;
+            padding: 0 12rem;
+        }
+        & > p {
+            padding: 0 12rem;
+            font-size: 4rem;
+            align-self: flex-start;
+        }
+    }
+}
+
+@include mobile {
+    .header-container {
+        & > h1 {
+            font-size: 4rem;
+            padding: 0 6rem;
+        }
+        & > p {
+            font-size: 2rem;
+            padding: 0 6rem;
+            align-self: flex-start;
+        }
     }
 }

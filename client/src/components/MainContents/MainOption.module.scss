@@ -1,3 +1,5 @@
+@import "../../constants/mixin.scss";
+
 .MainOption {
     display: flex;
     flex-direction: column;
@@ -16,5 +18,37 @@
         margin: 0 2rem;
         text-align: justify;
         font-size: 1.4rem;
+    }
+}
+
+@include tablet {
+    .MainOption {
+        & > svg {
+            font-size: 10rem;
+        }
+
+        &-title {
+            font-size: 2rem;
+            margin: 2rem 5rem;
+        }
+        &-detail {
+            margin: 0 14rem;
+        }
+    }
+}
+
+@include mobile {
+    .MainOption {
+        & > svg {
+            font-size: 12rem;
+        }
+
+        &-title {
+            font-size: 2rem;
+            margin: 2rem 5rem;
+        }
+        &-detail {
+            margin: 0 10rem;
+        }
     }
 }
