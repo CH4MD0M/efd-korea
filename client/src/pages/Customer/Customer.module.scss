@@ -1,4 +1,6 @@
-@import "./../../constants/color.scss";
+@import "../../constants/color.scss";
+@import "../../constants/mixin.scss";
+
 .customer {
     &-section {
         box-sizing: border-box;
@@ -7,7 +9,6 @@
         text-align: center;
     }
     &-title {
-        width: 100%;
         margin: 4rem 0;
         padding: 2rem;
         font-size: 4rem;
@@ -47,4 +48,17 @@
 .board-lists {
     margin: 2rem 0;
     padding: 2rem;
+}
+
+@include tablet {
+    .customer-section {
+        width: auto;
+        margin: 0 5rem;
+    }
+}
+@include mobile {
+    .customer-section {
+        width: auto;
+        margin: 0 1.5rem;
+    }
 }
