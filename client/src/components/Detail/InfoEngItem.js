@@ -1,10 +1,10 @@
 import React from "react";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 // Css
 import classes from "./DetailItem.module.scss";
 
 const InfoEngItem = ({ title, content, subtitle, subcontent, videoPath }) => {
-    console.log(videoPath);
     return (
         <>
             <div className={classes["detail__main1"]}>
@@ -54,9 +54,7 @@ const InfoEngItem = ({ title, content, subtitle, subcontent, videoPath }) => {
             </div>
             <div className={classes["detail__main1"]}>
                 <h1 className={classes["title"]}>강의 미리보기</h1>
-                <div className={classes["contents-container"]}>
-                    <video src={videoPath} />
-                </div>
+                <VideoPlayer videoPath={videoPath} />
             </div>
         </>
     );

@@ -1,27 +1,27 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors'); // localhost fetch 쓸 때 오류를 없애주기 위한 미들웨어
-const mongoSanitize = require('express-mongo-sanitize');
-const cookieParser = require('cookie-parser');
-const compression = require('compression');
-const xss = require('xss-clean');
+const path = require("path");
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors"); // localhost fetch 쓸 때 오류를 없애주기 위한 미들웨어
+const mongoSanitize = require("express-mongo-sanitize");
+const cookieParser = require("cookie-parser");
+const compression = require("compression");
+const xss = require("xss-clean");
 
-const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
-const AppError = require('./utils/appError');
-const globalErrorHandler = require('./controllers/errorController');
+const AppError = require("./utils/appError");
+const globalErrorHandler = require("./controllers/errorController");
 
 const app = express();
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
     // Development logging
     app.use(cors());
 }
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 // Body parser, reading data from body into req.body
-app.use(express.json({ limit: '10kb' })); // form에서 보낸 데이터들을 req.body 객체에 담아주는 미들웨어
-app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(express.json({ limit: "10kb" })); // form에서 보낸 데이터들을 req.body 객체에 담아주는 미들웨어
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 app.use(compression());
 
@@ -32,11 +32,11 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Serving static files
-const env = process.env.NODE_ENV === 'development' ? 'public' : 'client/build';
-const root = require('path').join(__dirname, `${env}`);
+const env = process.env.NODE_ENV === "development" ? "public" : "client/build";
+const root = require("path").join(__dirname, `${env}`);
 app.use(express.static(root));
 
-const uri = require('./config/URI')(process.env);
+const uri = require("./config/URI")(process.env);
 
 app.use(
     session({
@@ -46,8 +46,8 @@ app.use(
         // rolling: true, // 새로고침, 페이지 이동 등 활동하면 세션 갱신. resave도 true로 바꾸어야 함
         store: new MongoDBStore({
             uri,
-            collection: 'session',
-            databaseName: 'efdkorea',
+            collection: "session",
+            databaseName: "efdkorea",
         }),
         cookie: {
             secure: false, // https 이외에서도 사용 가능하게 만드는 옵션
@@ -58,17 +58,17 @@ app.use(
     })
 );
 
-const passport = require('./passport')(app);
-const authRouter = require('./routes/authRoutes')(passport);
-const studyRouter = require('./routes/studyRoutes');
-const boardRouter = require('./routes/boardRoutes');
+const passport = require("./passport")(app);
+const authRouter = require("./routes/authRoutes")(passport);
+const studyRouter = require("./routes/studyRoutes");
+const boardRouter = require("./routes/boardRoutes");
 
-app.use('/study', studyRouter);
-app.use('/auth', authRouter);
-app.use('/board', boardRouter);
+app.use("/study", studyRouter);
+app.use("/auth", authRouter);
+app.use("/board", boardRouter);
 
-app.use('/*', (req, res) => {
-    res.sendFile(path.join(root, 'index.html'));
+app.use("/*", (req, res) => {
+    res.sendFile(path.join(root, "index.html"));
 });
 
 app.use(globalErrorHandler);

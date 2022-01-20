@@ -1,5 +1,7 @@
 import React from "react";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
+// Css
 import classes from "./DetailItem.module.scss";
 
 const InfoMetaClass = () => {
@@ -152,6 +154,10 @@ const InfoMetaClass = () => {
                         src="/image/MetaClass/LOTTE.png"
                     />
                 </div>
+            </div>
+            <div className={classes["detail__main2"]}>
+                <h1 className={classes["title"]}>메타버스 컨텐츠 소개</h1>
+                <VideoPlayer videoPath="/videos/metaclass_intro.mp4" />
             </div>
         </>
     );

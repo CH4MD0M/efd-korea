@@ -28,7 +28,7 @@ export const InfoEngEle = () => {
     );
 };
 export const InfoEngMid = () => {
-    const { title, content, subtitle, subcontent } = infoMid;
+    const { title, content, subtitle, subcontent, videoPath } = infoMid;
 
     return (
         <section className={classes["detail-section"]}>
@@ -39,13 +39,14 @@ export const InfoEngMid = () => {
                     content={content}
                     subtitle={subtitle}
                     subcontent={subcontent}
+                    videoPath={videoPath}
                 />
             </main>
         </section>
     );
 };
 export const InfoEngHigh = () => {
-    const { title, content, subtitle, subcontent } = infoHigh;
+    const { title, content, subtitle, subcontent, videoPath } = infoHigh;
     return (
         <section className={classes["detail-section"]}>
             <DetailHeader header="header-1" />
@@ -55,6 +56,7 @@ export const InfoEngHigh = () => {
                     content={content}
                     subtitle={subtitle}
                     subcontent={subcontent}
+                    videoPath={videoPath}
                 />
             </main>
         </section>
