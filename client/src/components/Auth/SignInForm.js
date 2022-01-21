@@ -34,10 +34,9 @@ const SignInForm = (props) => {
             })
             .catch((error) => {
                 setIsLoading(false);
-                if (error.response) {
-                    const errorMsg = error.response.data.message;
-                    authCtx.modal(errorMsg);
-                }
+
+                const errorMsg = error.response.data.message;
+                authCtx.modal(errorMsg);
             });
     };
     return (
